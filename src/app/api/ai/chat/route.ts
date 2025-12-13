@@ -47,11 +47,10 @@ export async function POST(req: Request) {
 
         // 3. Stream Response
         const result = await streamText({
-            model: google("gemini-1.5-pro-latest"),
+            model: google("gemini-1.5-pro"),
             system: systemPrompt,
             messages: convertToCoreMessages(messages),
             tools: activeTools,
-            maxSteps: 5,
             onFinish: async ({ text, toolCalls, toolResults, usage }) => {
                 // Asynchronously logging usage or conversation turns can happen here
                 // firestore.collection('conversations').add(...)

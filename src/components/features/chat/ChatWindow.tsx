@@ -1,6 +1,6 @@
 "use client";
 
-import { useChat } from "ai/react";
+import { useChat } from "@ai-sdk/react";
 import { MessageBubble } from "./MessageBubble";
 import { Send, Sparkles, Loader2, StopCircle } from "lucide-react";
 import { useState, useRef, useEffect } from "react";

@@ -10,7 +10,8 @@ import {
     Settings,
     MessageSquare,
     LogOut,
-    Sparkles
+    Sparkles,
+    Terminal
 } from "lucide-react";
 import { useAuth } from "@/lib/context/UserContext";
 
@@ -19,8 +20,14 @@ const NAV_ITEMS = [
     { label: "AI Employees", href: "/employees", icon: Users },
     { label: "Chat Interface", href: "/chat", icon: MessageBubbleIcon },
     { label: "Lead Pipeline", href: "/leads", icon: Target },
+    { label: "Operations", href: "/operations", icon: TerminalIcon },
     { label: "Settings", href: "/settings", icon: Settings },
 ];
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function TerminalIcon(props: any) {
+    return <Terminal {...props} />
+}
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function MessageBubbleIcon(props: any) {

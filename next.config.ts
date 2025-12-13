@@ -9,15 +9,7 @@ const nextConfig: NextConfig = {
     };
     return config;
   },
-  experimental: {
-    // @ts-ignore
-    turbo: {
-      resolveAlias: {
-        "zod/v3": "zod",
-        "zod/v4": "zod",
-      },
-    },
-  },
+
 };
 
 export default nextConfig;

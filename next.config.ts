@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
     config.resolve.alias = {
       ...config.resolve.alias,
       "zod/v3": "zod",
+      "zod/v4": "zod",
     };
     return config;
   },
@@ -13,6 +14,7 @@ const nextConfig: NextConfig = {
     turbo: {
       resolveAlias: {
         "zod/v3": "zod",
+        "zod/v4": "zod",
       },
     },
   },

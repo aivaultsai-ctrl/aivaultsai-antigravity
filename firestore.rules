@@ -1,0 +1,41 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // User Profiles:
+    // Users can read/write their own profile only
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // AI Employees:
+    // Users can read all employees (to chat with them)
+    // Only Owners can delete/edit them (if we implement ownership). 
+    // For now: Read allow all authenticated, Write allow if owner.
+    match /ai_employees/{employeeId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null && request.resource.data.ownerId == request.auth.uid;
+      allow update, delete: if request.auth != null && resource.data.ownerId == request.auth.uid;
+    }
+
+    // Leads:
+    // Users can read leads they own (if we link leads to users later).
+    // For now, let's assume specific perms or server-side creation.
+    // Actually, leads are created by the *Server* (Admin SDK) usually? 
+    // If client reads them, we need rules.
+    // Let's assume leads are public to the organization or user. 
+    // Since we didn't firmly implement 'orgs', restricting to auth user is safe if we add ownerId to leads.
+    // However, the current code (leads/page.tsx) reads *all* leads. We should probably restrict this in future.
+    // For Phase 5 "Commercial", we'll allow authenticated read to unblock the demo.
+    match /leads/{leadId} {
+      allow read: if request.auth != null;
+      allow write: if false; // Only Admin SDK creates leads
+    }
+    
+    // Default Deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

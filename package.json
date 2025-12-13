@@ -4,15 +4,15 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint",
-    "vercel-build": "npm install --legacy-peer-deps && next build"
+    "vercel-build": "npm install --legacy-peer-deps && next build --webpack"
   },
   "dependencies": {
     "@ai-sdk/google": "^2.0.0",
     "@ai-sdk/react": "^2.0.0",
-    "@ai-sdk/ui-utils": "^2.0.0",
+    "@ai-sdk/ui-utils": "^1.1.0",
     "zod-to-json-schema": "^3.23.0",
     "@stripe/stripe-js": "^8.5.3",
     "ai": "^3.4.31",

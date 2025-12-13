@@ -31,7 +31,7 @@ export default function RegisterPage() {
             await createUserDocument(user, { displayName });
 
             router.push("/dashboard");
-        } catch (err: any) {
+        } catch (err: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
             console.error(err);
             setError(err.message || "Failed to create account.");
         } finally {

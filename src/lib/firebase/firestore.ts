@@ -2,6 +2,7 @@ import { db } from "./config";
 import { doc, setDoc, getDoc, serverTimestamp } from "firebase/firestore";
 import { User } from "firebase/auth";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function createUserDocument(user: User, additionalData?: any) {
     if (!user) return;
 

@@ -7,6 +7,7 @@ import { collection, onSnapshot, query, orderBy, limit } from "firebase/firestor
 import { cn } from "@/lib/utils";
 
 export default function LeadsPage() {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [leads, setLeads] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
 

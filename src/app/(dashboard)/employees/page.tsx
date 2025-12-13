@@ -11,6 +11,7 @@ import { UpgradeModal } from "@/components/features/billing/UpgradeModal";
 import { useAuth } from "@/lib/context/UserContext";
 
 export default function EmployeesPage() {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [employees, setEmployees] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
     const [showUpgrade, setShowUpgrade] = useState(false);

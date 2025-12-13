@@ -33,7 +33,7 @@ export async function POST(req: Request) {
         });
 
         return NextResponse.json({ url: session.url });
-    } catch (error: any) {
+    } catch (error: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
         console.error("Stripe Error:", error);
         return new NextResponse(error.message, { status: 500 });
     }

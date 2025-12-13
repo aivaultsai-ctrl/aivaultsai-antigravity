@@ -23,7 +23,7 @@ export async function POST(req: Request) {
         await batch.commit();
 
         return NextResponse.json({ success: true, message: "Employees seeded successfully." });
-    } catch (error: any) {
+    } catch (error: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });
     }
 }

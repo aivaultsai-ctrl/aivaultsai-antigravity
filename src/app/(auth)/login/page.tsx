@@ -24,7 +24,7 @@ export default function LoginPage() {
             await signInWithEmailAndPassword(auth, email, password);
             // User is logged in; UserContext will update, usage of protected routes will work.
             router.push("/dashboard");
-        } catch (err: any) {
+        } catch (err: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
             console.error(err);
             setError("Invalid email or password.");
         } finally {
@@ -39,7 +39,7 @@ export default function LoginPage() {
             // Create user doc if new
             await createUserDocument(user);
             router.push("/dashboard");
-        } catch (err: any) {
+        } catch (err: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
             console.error(err);
             setError(err.message || "Failed to sign in with Google.");
         }

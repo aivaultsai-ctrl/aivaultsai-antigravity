@@ -22,6 +22,7 @@ const NAV_ITEMS = [
     { label: "Settings", href: "/settings", icon: Settings },
 ];
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function MessageBubbleIcon(props: any) {
     return <MessageSquare {...props} />
 }

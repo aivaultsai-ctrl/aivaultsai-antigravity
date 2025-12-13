@@ -1,0 +1,84 @@
+
+> temp_setup@0.1.0 lint
+> eslint
+
+
+C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\src\app\(auth)\login\page.tsx
+  27:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  42:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\src\app\(auth)\register\page.tsx
+  34:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\src\app\(dashboard)\dashboard\page.tsx
+  4:17  warning  'MessageCircle' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\src\app\(dashboard)\employees\page.tsx
+  14:48  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\src\app\(dashboard)\leads\page.tsx
+  10:40  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\src\app\api\admin\seed\route.ts
+   7:28  warning  'req' is defined but never used           @typescript-eslint/no-unused-vars
+  26:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\src\app\api\ai\chat\route.ts
+  55:32  warning  'text' is defined but never used         @typescript-eslint/no-unused-vars
+  55:38  warning  'toolCalls' is defined but never used    @typescript-eslint/no-unused-vars
+  55:49  warning  'toolResults' is defined but never used  @typescript-eslint/no-unused-vars
+  55:62  warning  'usage' is defined but never used        @typescript-eslint/no-unused-vars
+
+C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\src\app\api\stripe\checkout\route.ts
+  36:21  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\src\app\api\stripe\webhook\route.ts
+  24:21  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\src\components\features\billing\UpgradeModal.tsx
+  4:10  warning  'Dialog' is defined but never used             @typescript-eslint/no-unused-vars
+  4:18  warning  'DialogContent' is defined but never used      @typescript-eslint/no-unused-vars
+  4:33  warning  'DialogHeader' is defined but never used       @typescript-eslint/no-unused-vars
+  4:47  warning  'DialogTitle' is defined but never used        @typescript-eslint/no-unused-vars
+  4:60  warning  'DialogDescription' is defined but never used  @typescript-eslint/no-unused-vars
+  6:10  warning  'loadStripe' is defined but never used         @typescript-eslint/no-unused-vars
+
+C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\src\components\features\chat\ChatWindow.tsx
+  6:10  warning  'useState' is defined but never used  @typescript-eslint/no-unused-vars
+  7:10  warning  'cn' is defined but never used        @typescript-eslint/no-unused-vars
+
+C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\src\components\features\chat\MessageBubble.tsx
+  2:21  warning  'Sparkles' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\src\components\layout\Sidebar.tsx
+  25:35  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\src\components\ui\dialog.tsx
+  3:10  warning  'cn' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\src\lib\ai\index.ts
+  34:22  warning  'error' is defined but never used   @typescript-eslint/no-unused-vars
+  44:27  warning  'query' is defined but never used   @typescript-eslint/no-unused-vars
+  59:27  warning  'reason' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\src\lib\firebase\admin.ts
+   1:19  warning  'getApp' is defined but never used        @typescript-eslint/no-unused-vars
+   9:10  warning  'e' is defined but never used             @typescript-eslint/no-unused-vars
+  19:10  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  47:6   error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  52:6   error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\src\lib\firebase\config.ts
+  20:11  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  21:9   error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  22:14  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  23:16  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\src\lib\firebase\firestore.ts
+  5:71  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\src\lib\stripe.ts
+  4:40  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+✖ 39 problems (18 errors, 21 warnings)
+

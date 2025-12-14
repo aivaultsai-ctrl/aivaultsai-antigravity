@@ -3,12 +3,7 @@ import { stripe } from "@/lib/stripe";
 import { adminDb } from "@/lib/firebase/admin";
 import Stripe from "stripe";
 
-// Disable body parsing, we need raw body for signature verification
-export const config = {
-    api: {
-        bodyParser: false,
-    },
-};
+
 
 export async function POST(req: Request) {
     const body = await req.text();

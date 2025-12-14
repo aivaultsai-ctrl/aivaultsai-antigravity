@@ -21,12 +21,16 @@ if (!serviceAccount.projectId) {
 }
 
 if (!getApps().length) {
-    try {
-        initializeApp({
-            credential: cert(serviceAccount),
-        });
-    } catch (e) {
-        console.warn("Admin init skipped:", e);
+    // Only attempt to initialize if we have real credentials or a valid looking service account
+    // Skip for the mock fallback to avoid "Too few bytes to read ASN.1 value" errors
+    if (serviceAccount.projectId !== "mock-project") {
+        try {
+            initializeApp({
+                credential: cert(serviceAccount),
+            });
+        } catch (e) {
+            console.warn("Admin init skipped:", e);
+        }
     }
 }
 

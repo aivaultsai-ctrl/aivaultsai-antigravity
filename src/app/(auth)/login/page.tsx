@@ -3,8 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { auth } from "@/lib/firebase/config";
-import { createUserDocument } from "@/lib/firebase/firestore";
+import { auth } from "../../../lib/firebase/config";
+import { createUserDocument } from "../../../lib/firebase/firestore";
 import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
 

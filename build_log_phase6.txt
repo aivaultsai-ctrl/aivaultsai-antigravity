@@ -1,0 +1,101 @@
+
+> temp_setup@0.1.0 build
+> next build --webpack
+
+ ⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of C:\Users\Startklaar\package-lock.json as the root directory.
+ To silence this warning, set `outputFileTracingRoot` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/output#caveats for more information.
+ Detected additional lockfiles: 
+   * C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\package-lock.json
+
+   ▲ Next.js 16.0.10 (webpack)
+   - Environments: .env.local
+
+ ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+   Creating an optimized production build ...
+Error: Can't resolve 'tw-animate-css' in 'C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\src\app'
+    at ignore-listed frames {
+  details: "resolve 'tw-animate-css' in 'C:\\Users\\Startklaar\\OneDrive\\Apps\\aivaultsai-antigravity\\src\\app'\n" +
+    '  Parsed request is a module\n' +
+    '  using description file: C:\\Users\\Startklaar\\OneDrive\\Apps\\aivaultsai-antigravity\\package.json (relative path: ./src/app)\n' +
+    '    resolve as module\n' +
+    "      C:\\Users\\Startklaar\\OneDrive\\Apps\\aivaultsai-antigravity\\src\\app\\node_modules doesn't exist or is not a directory\n" +
+    "      C:\\Users\\Startklaar\\OneDrive\\Apps\\aivaultsai-antigravity\\src\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in C:\\Users\\Startklaar\\OneDrive\\Apps\\aivaultsai-antigravity\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: C:\\Users\\Startklaar\\OneDrive\\Apps\\aivaultsai-antigravity\\package.json (relative path: ./node_modules/tw-animate-css)\n' +
+    '            no extension\n' +
+    "              C:\\Users\\Startklaar\\OneDrive\\Apps\\aivaultsai-antigravity\\node_modules\\tw-animate-css doesn't exist\n" +
+    '            .css\n' +
+    "              C:\\Users\\Startklaar\\OneDrive\\Apps\\aivaultsai-antigravity\\node_modules\\tw-animate-css.css doesn't exist\n" +
+    "        C:\\Users\\Startklaar\\OneDrive\\Apps\\aivaultsai-antigravity\\node_modules\\tw-animate-css doesn't exist\n" +
+    "      C:\\Users\\Startklaar\\OneDrive\\Apps\\node_modules doesn't exist or is not a directory\n" +
+    "      C:\\Users\\Startklaar\\OneDrive\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in C:\\Users\\Startklaar\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: C:\\Users\\Startklaar\\package.json (relative path: ./node_modules/tw-animate-css)\n' +
+    '            no extension\n' +
+    "              C:\\Users\\Startklaar\\node_modules\\tw-animate-css doesn't exist\n" +
+    '            .css\n' +
+    "              C:\\Users\\Startklaar\\node_modules\\tw-animate-css.css doesn't exist\n" +
+    "        C:\\Users\\Startklaar\\node_modules\\tw-animate-css doesn't exist\n" +
+    "      C:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "      C:\\node_modules doesn't exist or is not a directory"
+}
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\node_modules\next\dist\build\webpack\loaders\css-loader\src\index.js??ruleSet[1].rules[15].oneOf[10].use[2]!C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\node_modules\next\dist\build\webpack\loaders\postcss-loader\src\index.js??ruleSet[1].rules[15].oneOf[10].use[3]!C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\src\app\globals.css': No serializer registered for PostCSSSyntaxError
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> PostCSSSyntaxError
+Failed to compile.
+
+./src/app/globals.css:1:1
+Syntax error: tailwindcss: C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\src\app\globals.css Can't resolve 'tw-animate-css' in 'C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\src\app'
+
+[1m[31m>[39m[22m[90m 1 | [39m
+ [90m   | [39m[1m[31m^[39m[22m
+ [90m 2 | [39m[36m@import[39m [32m"tw-animate-css"[39m[33m;[39m
+ [90m 3 | [39m
+
+./src/app/globals.css
+Syntax error: tailwindcss: C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\src\app\globals.css Can't resolve 'tw-animate-css' in 'C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\src\app' (1:1)
+
+[1m[31m>[39m[22m[90m 1 | [39m
+ [90m   | [39m[1m[31m^[39m[22m
+ [90m 2 | [39m[36m@import[39m [32m"tw-animate-css"[39m[33m;[39m
+ [90m 3 | [39m
+
+    at tryRunOrWebpackError (C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\node_modules\next\dist\compiled\webpack\bundle5.js:29:316134)
+    at __webpack_require_module__ (C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\node_modules\next\dist\compiled\webpack\bundle5.js:29:131536)
+    at __nested_webpack_require_161494__ (C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\node_modules\next\dist\compiled\webpack\bundle5.js:29:130971)
+    at C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\node_modules\next\dist\compiled\webpack\bundle5.js:29:131828
+    at symbolIterator (C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\node_modules\next\dist\compiled\neo-async\async.js:1:14444)
+    at done (C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\node_modules\next\dist\compiled\neo-async\async.js:1:14824)
+    at Hook.eval [as callAsync] (eval at create (C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\node_modules\next\dist\compiled\webpack\bundle5.js:14:9224), <anonymous>:15:1)
+    at Hook.CALL_ASYNC_DELEGATE [as _callAsync] (C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\node_modules\next\dist\compiled\webpack\bundle5.js:14:6378)
+    at C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\node_modules\next\dist\compiled\webpack\bundle5.js:29:130691
+    at symbolIterator (C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\node_modules\next\dist\compiled\neo-async\async.js:1:14402)
+-- inner error --
+Syntax error: tailwindcss: C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\src\app\globals.css Can't resolve 'tw-animate-css' in 'C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\src\app' (1:1)
+
+[1m[31m>[39m[22m[90m 1 | [39m
+ [90m   | [39m[1m[31m^[39m[22m
+ [90m 2 | [39m[36m@import[39m [32m"tw-animate-css"[39m[33m;[39m
+ [90m 3 | [39m
+
+    at Object.<anonymous> (C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\node_modules\next\dist\build\webpack\loaders\css-loader\src\index.js??ruleSet[1].rules[15].oneOf[10].use[2]!C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\node_modules\next\dist\build\webpack\loaders\postcss-loader\src\index.js??ruleSet[1].rules[15].oneOf[10].use[3]!C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\src\app\globals.css:1:7)
+    at C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\node_modules\next\dist\compiled\webpack\bundle5.js:29:962757
+    at Hook.eval [as call] (eval at create (C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\node_modules\next\dist\compiled\webpack\bundle5.js:14:9002), <anonymous>:7:1)
+    at Hook.CALL_DELEGATE [as _call] (C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\node_modules\next\dist\compiled\webpack\bundle5.js:14:6272)
+    at C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\node_modules\next\dist\compiled\webpack\bundle5.js:29:131569
+    at tryRunOrWebpackError (C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\node_modules\next\dist\compiled\webpack\bundle5.js:29:316088)
+    at __webpack_require_module__ (C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\node_modules\next\dist\compiled\webpack\bundle5.js:29:131536)
+    at __nested_webpack_require_161494__ (C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\node_modules\next\dist\compiled\webpack\bundle5.js:29:130971)
+    at C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\node_modules\next\dist\compiled\webpack\bundle5.js:29:131828
+    at symbolIterator (C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\node_modules\next\dist\compiled\neo-async\async.js:1:14444)
+
+Generated code for C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\node_modules\next\dist\build\webpack\loaders\css-loader\src\index.js??ruleSet[1].rules[15].oneOf[10].use[2]!C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\node_modules\next\dist\build\webpack\loaders\postcss-loader\src\index.js??ruleSet[1].rules[15].oneOf[10].use[3]!C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\src\app\globals.css
+
+Import trace for requested module:
+./src/app/globals.css
+
+
+> Build failed because of webpack errors

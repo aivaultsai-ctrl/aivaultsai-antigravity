@@ -1,0 +1,82 @@
+
+> temp_setup@0.1.0 build
+> next build --webpack
+
+ ⚠ `eslint` configuration in next.config.mjs is no longer supported. See more info here: https://nextjs.org/docs/app/api-reference/cli/next#next-lint-options
+ ⚠ Invalid next.config.mjs options detected: 
+ ⚠     Unrecognized key(s) in object: 'eslint'
+ ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+ ⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of C:\Users\Startklaar\package-lock.json as the root directory.
+ To silence this warning, set `outputFileTracingRoot` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/output#caveats for more information.
+ Detected additional lockfiles: 
+   * C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\package-lock.json
+
+   ▲ Next.js 16.0.10 (webpack)
+   - Environments: .env.local
+
+ ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+   Creating an optimized production build ...
+Failed to compile.
+
+./node_modules/zod-to-json-schema/dist/esm/parsers/array.js
+Module not found: Package path ./v3 is not exported from package C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\node_modules\zod (see exports field in C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\node_modules\zod\package.json)
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./node_modules/zod-to-json-schema/dist/esm/index.js
+./node_modules/@ai-sdk/react/node_modules/@ai-sdk/ui-utils/dist/index.mjs
+./node_modules/@ai-sdk/react/dist/index.mjs
+./src/components/features/chat/ChatWindow.tsx
+./src/app/(dashboard)/chat/page.tsx
+
+./node_modules/zod-to-json-schema/dist/esm/parsers/record.js
+Module not found: Package path ./v3 is not exported from package C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\node_modules\zod (see exports field in C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\node_modules\zod\package.json)
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./node_modules/zod-to-json-schema/dist/esm/index.js
+./node_modules/@ai-sdk/react/node_modules/@ai-sdk/ui-utils/dist/index.mjs
+./node_modules/@ai-sdk/react/dist/index.mjs
+./src/components/features/chat/ChatWindow.tsx
+./src/app/(dashboard)/chat/page.tsx
+
+./node_modules/zod-to-json-schema/dist/esm/selectParser.js
+Module not found: Package path ./v3 is not exported from package C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\node_modules\zod (see exports field in C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\node_modules\zod\package.json)
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./node_modules/zod-to-json-schema/dist/esm/index.js
+./node_modules/@ai-sdk/react/node_modules/@ai-sdk/ui-utils/dist/index.mjs
+./node_modules/@ai-sdk/react/dist/index.mjs
+./src/components/features/chat/ChatWindow.tsx
+./src/app/(dashboard)/chat/page.tsx
+
+./node_modules/zod-to-json-schema/dist/esm/parsers/array.js
+Module not found: Package path ./v3 is not exported from package C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\node_modules\zod (see exports field in C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\node_modules\zod\package.json)
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./node_modules/zod-to-json-schema/dist/esm/index.js
+./node_modules/ai/node_modules/@ai-sdk/ui-utils/dist/index.mjs
+./node_modules/ai/dist/index.mjs
+./src/app/api/ai/chat/route.ts
+
+./node_modules/zod-to-json-schema/dist/esm/parsers/record.js
+Module not found: Package path ./v3 is not exported from package C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\node_modules\zod (see exports field in C:\Users\Startklaar\OneDrive\Apps\aivaultsai-antigravity\node_modules\zod\package.json)
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./node_modules/zod-to-json-schema/dist/esm/index.js
+./node_modules/ai/node_modules/@ai-sdk/ui-utils/dist/index.mjs
+./node_modules/ai/dist/index.mjs
+./src/app/api/ai/chat/route.ts
+
+
+> Build failed because of webpack errors

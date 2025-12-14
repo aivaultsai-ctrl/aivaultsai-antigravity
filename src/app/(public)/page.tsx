@@ -1,24 +1,13 @@
 import Link from 'next/link';
 import { Sparkles, ArrowRight, ShieldCheck } from 'lucide-react';
+import { PublicHeader } from '@/components/layout/PublicHeader';
 
 export default function LandingPage() {
     return (
         <main className="flex min-h-screen flex-col relative overflow-hidden bg-background">
             {/* Navigation Skeleton */}
-            <header className="fixed top-0 w-full z-50 border-b border-white/5 bg-background/60 backdrop-blur-md">
-                <div className="container flex h-16 items-center justify-between">
-                    <div className="font-bold text-xl tracking-tighter flex items-center gap-2">
-                        <div className="h-6 w-6 rounded bg-primary/20 flex items-center justify-center">
-                            <span className="text-primary text-xs">AI</span>
-                        </div>
-                        AIVaultsAI
-                    </div>
-                    <div className="flex items-center gap-4">
-                        <Link href="/login" className="text-sm font-medium hover:text-primary transition-colors">Login</Link>
-                        <Link href="/register" className="text-sm font-medium bg-white/10 px-4 py-2 rounded-lg hover:bg-white/20 transition">Get Started</Link>
-                    </div>
-                </div>
-            </header>
+            {/* Navigation Skeleton */}
+            <PublicHeader />
 
             {/* Hero Section */}
             <section className="pt-32 pb-16 md:pt-48 md:pb-32 container text-center relative z-10">

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"; // Assuming we have these or custom components
 import { Check } from "lucide-react";
 import { loadStripe } from "@stripe/stripe-js";
-import { auth } from "@/lib/firebase/config";
+import { auth } from "../../../lib/firebase/config";
 
 const FEATURES = [
     "Unlimited AI Employees",

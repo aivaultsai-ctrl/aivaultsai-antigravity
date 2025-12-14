@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { Header } from "@/components/layout/Header";
 import { Plus, Trash2, Edit, Bot } from "lucide-react";
-import { db } from "@/lib/firebase/config";
+import { db } from "../../../lib/firebase/config";
 import { collection, onSnapshot, deleteDoc, doc, addDoc, getDoc } from "firebase/firestore";
 import Link from "next/link";
 import { DEFAULT_EMPLOYEES } from "@/lib/ai/prompts";

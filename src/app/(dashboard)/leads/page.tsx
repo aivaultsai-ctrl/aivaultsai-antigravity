@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Header } from "@/components/layout/Header";
-import { db } from "@/lib/firebase/config";
+import { db } from "../../../lib/firebase/config";
 import { collection, onSnapshot, query, orderBy, limit } from "firebase/firestore";
 import { cn } from "@/lib/utils";
 

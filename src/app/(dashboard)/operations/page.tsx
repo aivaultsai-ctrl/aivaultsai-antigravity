@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Header } from "@/components/layout/Header";
+import { DashboardHeader } from "@/components/layout/DashboardHeader";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Terminal, Play, Pause, Activity, TrendingUp, Users, FileText, Zap } from "lucide-react";
@@ -29,7 +29,7 @@ export default function OperationsPage() {
 
     return (
         <>
-            <Header title="Operations Command Center" />
+            <DashboardHeader title="Operations Command Center" />
             <div className="p-8 space-y-8">
 
                 {/* Stats Row */}
@@ -92,10 +92,10 @@ export default function OperationsPage() {
                                         <span className="text-xs text-muted-foreground uppercase tracking-wider">{agent.role}</span>
                                     </div>
                                     <div className={`px-2 py-1 rounded text-xs font-bold border ${agent.status === "Active"
-                                            ? "bg-emerald-500/10 text-emerald-500 border-emerald-500/20"
-                                            : agent.status === "Idle"
-                                                ? "bg-yellow-500/10 text-yellow-500 border-yellow-500/20"
-                                                : "bg-red-500/10 text-red-500 border-red-500/20"
+                                        ? "bg-emerald-500/10 text-emerald-500 border-emerald-500/20"
+                                        : agent.status === "Idle"
+                                            ? "bg-yellow-500/10 text-yellow-500 border-yellow-500/20"
+                                            : "bg-red-500/10 text-red-500 border-red-500/20"
                                         }`}>
                                         {agent.status}
                                     </div>

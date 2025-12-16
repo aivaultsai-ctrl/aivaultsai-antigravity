@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Header } from "@/components/layout/Header";
+import { DashboardHeader } from "@/components/layout/DashboardHeader";
 import { Plus, Trash2, Edit, Bot } from "lucide-react";
 import { db } from "../../../lib/firebase/config";
 import { collection, onSnapshot, deleteDoc, doc, addDoc, getDoc } from "firebase/firestore";
 import Link from "next/link";
-import { DEFAULT_EMPLOYEES } from "@/lib/ai/prompts";
+import { DEFAULT_EMPLOYEES } from "@/lib/ai/employee-prompts";
 import { UpgradeModal } from "@/components/features/billing/UpgradeModal";
 import { useAuth } from "@/lib/context/UserContext";
 
@@ -58,7 +58,7 @@ export default function EmployeesPage() {
     return (
         <>
             <UpgradeModal open={showUpgrade} onOpenChange={setShowUpgrade} />
-            <Header title="AI Workforce" />
+            <DashboardHeader title="AI Workforce" />
             <div className="p-8">
 
                 <div className="flex items-center justify-between mb-8">

@@ -1,11 +1,11 @@
 "use client";
 
-import { Header } from "@/components/layout/Header";
+import { DashboardHeader } from "@/components/layout/DashboardHeader";
 
 export default function SettingsPage() {
     return (
         <>
-            <Header title="Settings" />
+            <DashboardHeader title="Settings" />
             <div className="p-8">
                 <div className="max-w-xl space-y-8">
                     <div className="glass-panel p-6 rounded-2xl border border-white/5">

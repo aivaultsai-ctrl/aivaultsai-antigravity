@@ -1,6 +1,6 @@
 "use client";
 
-import { Header } from "@/components/layout/Header";
+import { DashboardHeader } from "@/components/layout/DashboardHeader";
 import { Users, MessageCircle, TrendingUp, Zap } from "lucide-react";
 
 export default function DashboardPage() {
@@ -12,7 +12,7 @@ export default function DashboardPage() {
 
     return (
         <>
-            <Header title="Command Center" />
+            <DashboardHeader title="Command Center" />
             <div className="p-8 space-y-8">
                 {/* Stats Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

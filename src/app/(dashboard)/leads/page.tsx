@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Header } from "@/components/layout/Header";
+import { DashboardHeader } from "@/components/layout/DashboardHeader";
 import { db } from "../../../lib/firebase/config";
 import { collection, onSnapshot, query, orderBy, limit } from "firebase/firestore";
 import { cn } from "@/lib/utils";
@@ -25,7 +25,7 @@ export default function LeadsPage() {
 
     return (
         <>
-            <Header title="Lead Pipeline" />
+            <DashboardHeader title="Lead Pipeline" />
             <div className="p-8">
                 <div className="glass-panel overflow-hidden rounded-2xl border border-white/5">
                     <div className="p-4 border-b border-white/5 bg-white/5 backdrop-blur-md">

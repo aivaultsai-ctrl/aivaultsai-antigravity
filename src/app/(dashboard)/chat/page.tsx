@@ -1,7 +1,7 @@
 "use client";
 
-import ChatWindow from "@/components/features/chat/ChatWindow";
-import { DEFAULT_EMPLOYEES } from "@/lib/ai/prompts";
+import ChatWindow from "../../../components/features/chat/ChatWindow";
+import { DEFAULT_EMPLOYEES } from "../../../lib/ai/prompts";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 

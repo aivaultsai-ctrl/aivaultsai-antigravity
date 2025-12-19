@@ -2,7 +2,7 @@ import { createGoogleGenerativeAI } from "@ai-sdk/google";
 import { streamText, convertToCoreMessages } from "ai";
 import { tools } from "@/lib/ai";
 import { adminDb } from "@/lib/firebase/admin";
-import { DEFAULT_EMPLOYEES } from "@/lib/ai/prompts";
+import { DEFAULT_EMPLOYEES } from "@/lib/ai/employee-prompts";
 
 // Ensure Node.js runtime for Firebase Admin SDK compatibility
 export const runtime = 'nodejs';

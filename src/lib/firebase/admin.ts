@@ -6,8 +6,17 @@ import { getAuth } from "firebase-admin/auth";
 // Safe parsing for build environments
 let serviceAccount: ServiceAccount;
 try {
-    serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY || "{}");
+    const rawKey = process.env.FIREBASE_SERVICE_ACCOUNT_KEY || "{}";
+    // Handle cases where the env var might be wrapped in extra quotes
+    const sanitizedKey = rawKey.trim().replace(/^['"]|['"]$/g, '');
+    serviceAccount = JSON.parse(sanitizedKey);
+    
+    // Fix: Ensure private key newlines are correct
+    if (serviceAccount && serviceAccount.privateKey) {
+        serviceAccount.privateKey = serviceAccount.privateKey.replace(/\\n/g, '\n');
+    }
 } catch (e) {
+    console.error("Failed to parse FIREBASE_SERVICE_ACCOUNT_KEY:", e);
     serviceAccount = {} as ServiceAccount;
 }
 
@@ -21,22 +30,23 @@ if (!serviceAccount.projectId) {
 }
 
 if (!getApps().length) {
-    // Only attempt to initialize if we have real credentials or a valid looking service account
-    // Skip for the mock fallback to avoid "Too few bytes to read ASN.1 value" errors
-    const hasValidKey = serviceAccount.privateKey && serviceAccount.privateKey.includes("PRIVATE KEY");
+    // Only attempt to initialize if we have real credentials and not the mock fallback
+    const hasValidKey = serviceAccount.privateKey && 
+                        serviceAccount.privateKey.includes("PRIVATE KEY") && 
+                        serviceAccount.projectId !== "mock-project";
 
-    if (serviceAccount.projectId !== "mock-project" && hasValidKey) {
+    if (hasValidKey) {
         try {
             initializeApp({
                 credential: cert(serviceAccount),
             });
         } catch (e) {
-            console.warn("Admin init skipped:", e);
+            console.warn("Admin init failed with provided credentials:", e);
         }
     }
 }
 
-// Functional mocks for build safety
+// Functional mocks for build safety when admin is not initialized
 const mockDb = {
     collection: () => ({
         doc: () => ({

@@ -25,6 +25,7 @@ const config: Config = {
                 primary: {
                     DEFAULT: "hsl(var(--primary) / <alpha-value>)",
                     foreground: "hsl(var(--primary-foreground) / <alpha-value>)",
+                    hover: "hsl(var(--primary-hover) / <alpha-value>)",
                 },
                 secondary: {
                     DEFAULT: "hsl(var(--secondary) / <alpha-value>)",
@@ -50,6 +51,19 @@ const config: Config = {
                     DEFAULT: "hsl(var(--card) / <alpha-value>)",
                     foreground: "hsl(var(--card-foreground) / <alpha-value>)",
                 },
+                error: {
+                    DEFAULT: "hsl(var(--error) / <alpha-value>)",
+                    foreground: "hsl(var(--error-foreground) / <alpha-value>)",
+                    border: "hsl(var(--error-border) / <alpha-value>)",
+                },
+                success: {
+                    DEFAULT: "hsl(var(--success) / <alpha-value>)",
+                    foreground: "hsl(var(--success-foreground) / <alpha-value>)",
+                    border: "hsl(var(--success-border) / <alpha-value>)",
+                },
+            },
+            boxShadow: {
+                DEFAULT: "0 4px 8px rgba(0, 0, 0, 0.1)",
             },
             borderRadius: {
                 lg: "var(--radius)",

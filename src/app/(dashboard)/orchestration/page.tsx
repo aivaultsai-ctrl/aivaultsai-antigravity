@@ -4,21 +4,12 @@ import { useState, useEffect } from "react";
 import { DashboardHeader } from "@/components/layout/DashboardHeader";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select";
 import {
     Play,
     CheckCircle2,
     Clock,
     Loader2,
     BarChart3,
-    ArrowRight,
 } from "lucide-react";
 import {
     collection,
@@ -121,25 +112,22 @@ export default function OrchestrationPage() {
                                     <label className="text-sm text-muted-foreground mb-2 block">
                                         Select Workflow
                                     </label>
-                                    <Select
+                                    <select
                                         value={selectedWorkflow}
-                                        onValueChange={setSelectedWorkflow}
+                                        onChange={(e) => setSelectedWorkflow(e.target.value)}
+                                        className="flex h-10 w-full items-center justify-between rounded-md border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1"
                                     >
-                                        <SelectTrigger className="bg-white/5 border-white/10 text-white">
-                                            <SelectValue placeholder="Select workflow" />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                            {WORKFLOWS.map((w) => (
-                                                <SelectItem
-                                                    key={w.id}
-                                                    value={w.id}
-                                                    disabled={w.disabled}
-                                                >
-                                                    {w.name}
-                                                </SelectItem>
-                                            ))}
-                                        </SelectContent>
-                                    </Select>
+                                        {WORKFLOWS.map((w) => (
+                                            <option
+                                                key={w.id}
+                                                value={w.id}
+                                                disabled={w.disabled}
+                                                className="bg-slate-900 text-white"
+                                            >
+                                                {w.name}
+                                            </option>
+                                        ))}
+                                    </select>
                                 </div>
 
                                 {selectedWorkflow === "content-to-leads" && (
@@ -148,19 +136,19 @@ export default function OrchestrationPage() {
                                             <label className="text-sm text-muted-foreground mb-2 block">
                                                 YouTube URL
                                             </label>
-                                            <Input
+                                            <input
                                                 value={params.videoUrl}
                                                 onChange={(e) =>
                                                     setParams({ ...params, videoUrl: e.target.value })
                                                 }
-                                                className="bg-white/5 border-white/10 text-white placeholder:text-muted-foreground/50"
+                                                className="flex h-10 w-full rounded-md border border-white/10 bg-white/5 px-3 py-2 text-sm text-white ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                                             />
                                         </div>
                                         <div>
                                             <label className="text-sm text-muted-foreground mb-2 block">
                                                 Platforms (comma sep)
                                             </label>
-                                            <Input
+                                            <input
                                                 value={params.targetPlatforms}
                                                 onChange={(e) =>
                                                     setParams({
@@ -168,14 +156,14 @@ export default function OrchestrationPage() {
                                                         targetPlatforms: e.target.value,
                                                     })
                                                 }
-                                                className="bg-white/5 border-white/10 text-white"
+                                                className="flex h-10 w-full rounded-md border border-white/10 bg-white/5 px-3 py-2 text-sm text-white ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                                             />
                                         </div>
                                         <div>
                                             <label className="text-sm text-muted-foreground mb-2 block">
                                                 Target Audience
                                             </label>
-                                            <Input
+                                            <input
                                                 value={params.targetAudience}
                                                 onChange={(e) =>
                                                     setParams({
@@ -183,7 +171,7 @@ export default function OrchestrationPage() {
                                                         targetAudience: e.target.value,
                                                     })
                                                 }
-                                                className="bg-white/5 border-white/10 text-white"
+                                                className="flex h-10 w-full rounded-md border border-white/10 bg-white/5 px-3 py-2 text-sm text-white ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                                             />
                                         </div>
                                     </>

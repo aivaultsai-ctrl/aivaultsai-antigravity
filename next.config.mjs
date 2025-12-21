@@ -1,24 +1,14 @@
 ﻿/** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Disable output file tracing to fix Vercel routes-manifest error
-  outputFileTracingRoot: undefined,
+  // Fix: Reverted to working state by removing 'undefined' properties which break Vercel's manifest pathing
   outputFileTracing: false,
-  
-  experimental: {
-    // Zorg dat deze off is
-    outputFileTracingIncludes: undefined,
-  },
-
-  // Andere configuraties
   reactStrictMode: true,
   swcMinify: true,
   
-  // Als je images gebruikt:
   images: {
-    domains: ['firebasestorage.googleapis.com'], // voor Firebase images
+    domains: ['firebasestorage.googleapis.com'],
   },
 
-  // Build safety
   typescript: {
     ignoreBuildErrors: true,
   },

@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+﻿/* eslint-disable @typescript-eslint/no-explicit-any */
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
@@ -15,21 +15,21 @@ const firebaseConfig = {
 };
 
 // Singleton pattern to avoid re-initialization
-
-const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+const hasValidConfig = firebaseConfig.apiKey && firebaseConfig.apiKey !== "undefined";
+const app = (!getApps().length && hasValidConfig) ? initializeApp(firebaseConfig) : (getApps().length ? getApp() : null);
 
 let auth: any;
 let db: any;
 let storage: any;
 let functions: any;
 
-if (typeof window !== "undefined" && firebaseConfig.apiKey !== "mock-key") {
+if (typeof window !== "undefined" && app) {
     auth = getAuth(app);
     db = getFirestore(app);
     storage = getStorage(app);
     functions = getFunctions(app);
 } else {
-    // Mock clients for Server-Side build / mock env
+    // Mock clients for Server-Side build / mock env / missing config
     auth = { currentUser: null, onAuthStateChanged: () => () => { } };
     db = { collection: () => ({}) };
     storage = {};

@@ -19,13 +19,31 @@ export function PublicHeader() {
                 <div className="flex items-center gap-6">
                     <nav className="hidden md:flex items-center gap-6">
                         <Link
+                            href="/agents"
+                            className={cn(
+                                "text-sm font-medium transition-colors hover:text-primary",
+                                pathname.startsWith("/agents") ? "text-primary" : "text-muted-foreground"
+                            )}
+                        >
+                            Agents
+                        </Link>
+                        <Link
+                            href="/business"
+                            className={cn(
+                                "text-sm font-medium transition-colors hover:text-primary",
+                                pathname === "/business" ? "text-primary" : "text-muted-foreground"
+                            )}
+                        >
+                            Business
+                        </Link>
+                        <Link
                             href="/chatbots"
                             className={cn(
                                 "text-sm font-medium transition-colors hover:text-primary",
                                 pathname.startsWith("/chatbots") ? "text-primary" : "text-muted-foreground"
                             )}
                         >
-                            AI Workforce
+                            Workforce
                         </Link>
                         <Link
                             href="/about"
@@ -35,15 +53,6 @@ export function PublicHeader() {
                             )}
                         >
                             About
-                        </Link>
-                        <Link
-                            href="/ai-workers"
-                            className={cn(
-                                "text-sm font-medium transition-colors hover:text-primary",
-                                pathname === "/ai-workers" ? "text-primary" : "text-muted-foreground"
-                            )}
-                        >
-                            Marketplace
                         </Link>
                     </nav>
                     <div className="flex items-center gap-4">

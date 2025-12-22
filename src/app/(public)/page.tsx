@@ -41,16 +41,17 @@ export default function LandingPage() {
                     </div>
                 </div>
 
-                {/* Hero Video Placeholder */}
-                <div className="max-w-6xl mx-auto aspect-video bg-black/50 border border-white/10 rounded-2xl shadow-2xl overflow-hidden relative group cursor-pointer backdrop-blur-sm">
-                    <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-[#0F172A] via-transparent to-transparent">
-                        <div className="flex flex-col items-center gap-4 transform group-hover:scale-105 transition-transform duration-500">
-                            <div className="w-24 h-24 rounded-full bg-[#00e0ff]/20 flex items-center justify-center border border-[#00e0ff]/50 backdrop-blur-md">
-                                <div className="w-0 h-0 border-t-[12px] border-t-transparent border-l-[22px] border-l-[#00e0ff] border-b-[12px] border-b-transparent ml-1" />
-                            </div>
-                            <span className="text-sm font-medium tracking-widest uppercase text-[#00e0ff]">System Demo</span>
-                        </div>
-                    </div>
+                {/* Hero Video */}
+                <div className="max-w-6xl mx-auto aspect-video bg-black/50 border border-white/10 rounded-2xl shadow-2xl overflow-hidden relative group backdrop-blur-sm">
+                    <video
+                        src="/ai-operations-command-center.mp4"
+                        className="w-full h-full object-cover"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-transparent to-transparent pointer-events-none" />
                 </div>
             </section>
 

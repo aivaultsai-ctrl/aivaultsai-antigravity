@@ -34,11 +34,17 @@ export default function ChatbotsLayout({ children }: { children: React.ReactNode
             {/* Footer */}
             <footer className="border-t border-[#1F2937] bg-[#111827] mt-24 py-12">
                 <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-[#9CA3AF] text-sm">
-                    <div className="flex items-center gap-2">
-                        <Bot className="w-5 h-5 text-[#3B82F6]" />
-                        <span className="font-semibold text-white">AI Workforce</span>
+                    <div className="flex flex-col gap-1">
+                        <div className="flex items-center gap-2 mb-2">
+                            <Bot className="w-5 h-5 text-[#3B82F6]" />
+                            <span className="font-semibold text-white">AIVaultsAI</span>
+                        </div>
+                        <p>A trading name of S. Meester Bestratingen</p>
+                        <p>KvK: 93216653</p>
                     </div>
-                    <p>© {new Date().getFullYear()} AIVaults. All rights reserved.</p>
+                    <div className="text-right">
+                        <p>© 2025 AIVaultsAI. All rights reserved.</p>
+                    </div>
                 </div>
             </footer>
         </div>

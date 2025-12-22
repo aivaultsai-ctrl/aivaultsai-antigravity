@@ -6,7 +6,6 @@ export default function LandingPage() {
     return (
         <main className="flex min-h-screen flex-col relative overflow-hidden bg-background">
             {/* Navigation Skeleton */}
-            {/* Navigation Skeleton */}
             <PublicHeader />
 
             {/* Hero Section */}
@@ -52,6 +51,22 @@ export default function LandingPage() {
                     ))}
                 </div>
             </section>
+
+            {/* Footer */}
+            <footer className="py-12 border-t border-white/10 bg-black/40 backdrop-blur-md relative z-10">
+                <div className="container flex flex-col md:flex-row justify-between items-center gap-6 text-muted-foreground text-sm">
+                    <div className="flex flex-col gap-1">
+                        <div className="flex items-center gap-2 mb-2">
+                            <span className="font-semibold text-white">AIVaultsAI</span>
+                        </div>
+                        <p>A trading name of S. Meester Bestratingen</p>
+                        <p>KvK: 93216653</p>
+                    </div>
+                    <div className="text-right">
+                        <p>© 2025 AIVaultsAI. All rights reserved.</p>
+                    </div>
+                </div>
+            </footer>
 
             {/* Background Decor */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-indigo-500/20 blur-[130px] rounded-full pointer-events-none opacity-30 mix-blend-screen" />

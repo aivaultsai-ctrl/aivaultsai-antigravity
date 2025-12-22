@@ -4,63 +4,61 @@
 
 @layer base {
   :root {
-    /* Background: #f4f7f6 -> HSL(160, 8%, 96%) */
-    --background: 160 8% 96%;
-    /* Foreground (Text Primary): #333333 -> HSL(0, 0%, 20%) */
-    --foreground: 0 0% 20%;
+    /* Background: Deep Slate #020617 */
+    --background: 222.2 84% 4.9%;
+    /* Foreground: Slate 50 #f8fafc */
+    --foreground: 210 40% 98%;
 
-    /* Cards: #ffffff -> HSL(0, 0%, 100%) */
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 20%;
+    /* Card: Slate 900 #0f172a */
+    --card: 222.2 47.4% 11.2%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 20%;
+    /* Popover: Slate 900 */
+    --popover: 222.2 47.4% 11.2%;
+    --popover-foreground: 210 40% 98%;
 
-    /* Primary: #007bff -> HSL(211, 100%, 50%) */
-    --primary: 211 100% 50%;
-    /* Text on Primary Button: White */
+    /* Primary: Blue 500 #3b82f6 */
+    --primary: 217.2 91.2% 59.8%;
     --primary-foreground: 0 0% 100%;
-    /* Hover state #0056b3 -> HSL(211, 100%, 35%) (For custom usage) */
-    --primary-hover: 211 100% 35%;
+    /* Primary Hover: Blue 600 #2563eb */
+    --primary-hover: 221.2 83.2% 53.3%;
 
-    /* Secondary */
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary: Slate 800 #1e293b */
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
 
-    /* Muted */
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 0 0% 40%;
+    /* Muted: Slate 800 */
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
 
-    /* Accent */
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent: Slate 800 */
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
 
-    /* Destructive */
-    --destructive: 0 84.2% 60.2%;
+    /* Destructive: Red 900 */
+    --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    /* Border: #ddd -> HSL(0, 0%, 87%) */
-    --border: 0 0% 87%;
-    --input: 0 0% 87%;
-    --ring: 211 100% 50%;
+    /* Border: Slate 800 */
+    --border: 217.2 32.6% 17.5%;
+    /* Input: Slate 800 */
+    --input: 217.2 32.6% 17.5%;
+    /* Ring: Blue 500 */
+    --ring: 217.2 91.2% 59.8%;
 
     --radius: 0.5rem;
 
     /* Error States */
-    /* Bg: #f8d7da -> 351 58% 91% */
-    --error: 351 58% 91%;
-    /* Text: #721c24 -> 355 60% 28% */
-    --error-foreground: 355 60% 28%;
-    /* Border: #f5c6cb -> 351 68% 87% */
-    --error-border: 351 68% 87%;
+    --error: 0 100% 95%;
+    /* Light red for error bg contexts if needed, but in dark mode usually we use text */
+    /* Adjusting Error for Dark Mode suitability if needed, but keeping legacy structure. Ideally dark mode errors are red text. */
+    --error-foreground: 0 100% 67%;
+    --error-border: 0 62.8% 30.6%;
 
     /* Success States */
-    /* Bg: #d4edda -> 134 41% 88% */
-    --success: 134 41% 88%;
-    /* Text: #155724 -> 134 61% 21% */
-    --success-foreground: 134 61% 21%;
-    /* Border: #c3e6cb -> 134 43% 83% */
-    --success-border: 134 43% 83%;
+    --success: 142.1 76.2% 36.3%;
+    --success-foreground: 210 40% 98%;
+    --success-border: 142.1 76.2% 36.3%;
   }
 
   body {
@@ -71,22 +69,22 @@
 
 @layer utilities {
   .glass-panel {
-    background-color: hsl(var(--background) / 0.6);
-    backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: hsl(var(--card) / 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border) / 0.5);
   }
 
   .text-gradient {
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
-    background-image: linear-gradient(to right, #ffffff, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+    background-image: linear-gradient(to right, #f8fafc, #94a3b8);
   }
 
   .text-gradient-primary {
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
-    background-image: linear-gradient(to right, #818cf8, #22d3ee);
+    background-image: linear-gradient(to right, #3b82f6, #818cf8);
   }
 }

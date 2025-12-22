@@ -1,228 +1,360 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
-import { Sparkles, Send, Play, FileText, CheckCircle, Clock } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { useSearchParams } from 'next/navigation';
+import {
+    Sparkles, Send, Play, FileText, CheckCircle, Clock,
+    Briefcase, Zap, MessageSquare, LifeBuoy, AlertCircle, File
+} from 'lucide-react';
+
+// --- TYPES ---
+type AgentType = 'business' | 'automation' | 'content' | 'support';
+
+interface Action {
+    label: string;
+    intent: string;
+    primary?: boolean;
+    status?: 'idle' | 'executing' | 'done' | 'failed';
+}
+
+interface TaskOutput {
+    summary: string;
+    steps?: string[];
+    content?: string;
+    files?: { name: string; type: string }[];
+    actions: Action[];
+}
+
+interface Task {
+    id: number;
+    query: string;
+    agent: AgentType;
+    status: 'processing' | 'completed' | 'error';
+    output?: TaskOutput;
+    timestamp: number;
+}
+
+// --- AGENT CONFIGURATION ---
+const AGENTS: Record<string, { name: string; role: string; icon: any; color: string }> = {
+    business: { name: 'Business Assistant', role: 'Strategy & Ops', icon: Briefcase, color: '#00e0ff' },
+    automation: { name: 'Automation Agent', role: 'Workflow Automator', icon: Zap, color: '#f59e0b' },
+    content: { name: 'Content Creator', role: 'Social & Copy', icon: MessageSquare, color: '#10b981' },
+    support: { name: 'Support Agent', role: 'Customer Success', icon: LifeBuoy, color: '#ec4899' },
+};
 
 export default function AgentsPage() {
+    const searchParams = useSearchParams();
+    const activeAgentType = (searchParams.get('type') as AgentType) || 'business';
+    const activeAgent = AGENTS[activeAgentType] || AGENTS.business;
+
     const [command, setCommand] = useState('');
     const [isProcessing, setIsProcessing] = useState(false);
-    const [tasks, setTasks] = useState<any[]>([]); // History of tasks
+    const [tasks, setTasks] = useState<Task[]>([]);
     const [suggestionsVisible, setSuggestionsVisible] = useState(true);
+    const [showProactiveToast, setShowProactiveToast] = useState(false);
 
-    // Proactive suggestions logic
+    // --- PROACTIVE LOGIC ---
     useEffect(() => {
-        // Every 60s check for inactivity (mock implementation)
         const timer = setInterval(() => {
-            // Logic to show proactive toast could go here
-        }, 60000);
+            if (tasks.length > 0 && !isProcessing) {
+                setShowProactiveToast(true);
+                setTimeout(() => setShowProactiveToast(false), 5000); // Auto hide
+            }
+        }, 45000); // Check every 45s
         return () => clearInterval(timer);
-    }, []);
+    }, [tasks.length, isProcessing]);
 
+    // --- COMMAND EXECUTION ---
     const handleExecute = async () => {
         if (!command.trim()) return;
+
         setIsProcessing(true);
         setSuggestionsVisible(false);
+        setShowProactiveToast(false);
 
-        // Mock AI Processing Delay
-        await new Promise(resolve => setTimeout(resolve, 2000));
-
-        const newTask = {
-            id: Date.now(),
+        // 1. Create a "Processing" task
+        const tempId = Date.now();
+        setTasks(prev => [{
+            id: tempId,
             query: command,
-            status: 'completed', // or 'pending_approval'
-            output: {
-                summary: "I've drafted a response to your client meeting request.",
-                type: 'email_draft',
-                content: "Subject: Follow up on AI integration\n\nHi John,\n\nThanks for your time yesterday...",
-                actions: [
-                    { label: "Send Email", intent: "send_email", primary: true },
-                    { label: "Edit Draft", intent: "edit_email" }
-                ]
-            }
-        };
+            agent: activeAgentType,
+            status: 'processing',
+            timestamp: Date.now()
+        }, ...prev]);
 
-        setTasks(prev => [newTask, ...prev]);
         setCommand('');
+
+        // 2. Simulate Backend / AI Agent latency
+        await new Promise(resolve => setTimeout(resolve, 2500));
+
+        // 3. Update task with response (Mock Outcome based on Agent Type)
+        setTasks(prev => prev.map(t => {
+            if (t.id === tempId) {
+                return {
+                    ...t,
+                    status: 'completed',
+                    output: generateMockResponse(activeAgentType, t.query)
+                };
+            }
+            return t;
+        }));
+
         setIsProcessing(false);
     };
 
-    return (
-        <div className="flex-1 flex overflow-hidden">
-            {/* Main Command Center */}
-            <div className="flex-1 flex flex-col relative">
+    const handleActionClick = (taskId: number, actionIndex: number) => {
+        // Prevent auto-execution logic here. 
+        // In a real app, this would trigger the write operation.
+        setTasks(prev => prev.map(t => {
+            if (t.id === taskId && t.output) {
+                const newActions = [...t.output.actions];
+                newActions[actionIndex] = { ...newActions[actionIndex], status: 'done', label: 'Completed' };
+                return { ...t, output: { ...t.output, actions: newActions } };
+            }
+            return t;
+        }));
+    };
 
-                {/* Top Bar */}
-                <header className="h-16 border-b border-white/5 flex items-center justify-between px-8 bg-[#0F172A]/50 backdrop-blur-md z-10">
+    return (
+        <div className="flex-1 flex overflow-hidden bg-[#0B1120] text-gray-100 font-sans selection:bg-[#00e0ff] selection:text-black">
+
+            {/* --- MAIN PANEL --- */}
+            <div className="flex-1 flex flex-col relative w-full max-w-5xl mx-auto">
+
+                {/* Header */}
+                <header className="h-16 flex items-center justify-between px-6 lg:px-8 border-b border-white/5 bg-[#0F172A]/80 backdrop-blur-md z-10">
                     <div className="flex items-center gap-3">
-                        <span className="w-2 h-2 rounded-full bg-[#00e0ff] shadow-[0_0_10px_#00e0ff]" />
-                        <span className="text-sm font-medium text-gray-300">System Online</span>
-                    </div>
-                    <div className="flex items-center gap-4">
-                        {/* Right header items if needed */}
+                        <div className={`p-1.5 rounded-lg bg-[${activeAgent.color}]/10 border border-[${activeAgent.color}]/20`}>
+                            <activeAgent.icon className="w-4 h-4" style={{ color: activeAgent.color }} />
+                        </div>
+                        <div>
+                            <h2 className="text-sm font-bold text-white tracking-wide">{activeAgent.name}</h2>
+                            <div className="flex items-center gap-2">
+                                <span className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_#22c55e]" />
+                                <span className="text-[10px] uppercase tracking-wider text-green-500 font-medium">Online</span>
+                            </div>
+                        </div>
                     </div>
                 </header>
 
-                {/* Activity Feed / Scroll Area */}
-                <div className="flex-1 overflow-y-auto p-8 space-y-8 scroll-smooth">
+                {/* Scrollable Feed */}
+                <div className="flex-1 overflow-y-auto px-6 lg:px-8 py-8 space-y-8 scroll-smooth min-h-0">
 
-                    {tasks.length === 0 && (
-                        <div className="h-full flex flex-col items-center justify-center text-center opacity-0 animate-in fade-in zoom-in duration-500">
-                            <div className="w-20 h-20 rounded-full bg-gradient-to-tr from-[#00e0ff]/20 to-purple-500/20 flex items-center justify-center mb-6 shadow-[0_0_50px_-10px_#00e0ff30] border border-white/5">
-                                <Sparkles className="w-8 h-8 text-[#00e0ff]" />
+                    {/* Empty State */}
+                    {tasks.length === 0 && !isProcessing && (
+                        <div className="h-full flex flex-col items-center justify-center text-center opacity-0 animate-in fade-in zoom-in duration-500 pb-20">
+                            <div className="relative mb-8">
+                                <div className="absolute inset-0 bg-[#00e0ff] blur-[60px] opacity-10 rounded-full" />
+                                <div className="relative w-24 h-24 rounded-2xl bg-gradient-to-tr from-[#0F172A] to-[#1E293B] border border-white/10 flex items-center justify-center shadow-2xl ring-1 ring-white/5">
+                                    <activeAgent.icon className="w-10 h-10 text-white" />
+                                </div>
                             </div>
-                            <h1 className="text-3xl font-bold text-white mb-2">Good afternoon, Captain.</h1>
-                            <p className="text-gray-400 max-w-md">Your autonomous workforce is standby. Choose a quick action or describe your objective below.</p>
+                            <h1 className="text-3xl lg:text-4xl font-bold text-white mb-3">
+                                {activeAgent.name} System
+                            </h1>
+                            <p className="text-gray-400 max-w-md text-lg leading-relaxed">
+                                Ready to assist. Select an action or describe your objective to begin.
+                            </p>
                         </div>
                     )}
 
-                    {/* Task Cards */}
-                    {tasks.map((task) => (
-                        <div key={task.id} className="w-full max-w-3xl mx-auto animate-in slide-in-from-bottom-5">
-                            {/* User Query */}
-                            <div className="flex justify-end mb-6">
-                                <div className="bg-[#1E293B] px-6 py-3 rounded-2xl rounded-tr-sm text-gray-200 border border-white/5 inline-block max-w-xl">
+                    {/* Task History */}
+                    {tasks.slice().reverse().map((task) => (
+                        <div key={task.id} className="w-full max-w-3xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-500">
+
+                            {/* User Query Block */}
+                            <div className="flex justify-end mb-4 group">
+                                <div className="bg-[#1E293B] pl-5 pr-5 py-3.5 rounded-2xl rounded-tr-sm text-gray-200 border border-white/5 shadow-md max-w-xl text-[15px] leading-relaxed relative overflow-hidden">
                                     {task.query}
                                 </div>
                             </div>
 
-                            {/* Agent Response Card */}
-                            <div className="bg-black/40 border border-[#00e0ff]/20 rounded-2xl overflow-hidden shadow-2xl relative">
-                                <div className="absolute top-0 left-0 w-1 h-full bg-[#00e0ff]" />
-
-                                {/* Card Header */}
-                                <div className="p-6 border-b border-white/5 flex items-start gap-4">
-                                    <div className="w-10 h-10 rounded-lg bg-[#00e0ff]/10 flex items-center justify-center shrink-0 border border-[#00e0ff]/20">
-                                        <Sparkles className="w-5 h-5 text-[#00e0ff]" />
-                                    </div>
-                                    <div>
-                                        <h3 className="font-semibold text-lg text-white mb-1">Task Completed</h3>
-                                        <p className="text-gray-400 text-sm">{task.output.summary}</p>
-                                    </div>
+                            {/* Agent Output Block */}
+                            <div className="flex gap-4">
+                                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#00e0ff] to-blue-600 flex items-center justify-center shrink-0 shadow-lg shadow-blue-500/20 mt-1">
+                                    <Sparkles className="w-4 h-4 text-white" />
                                 </div>
 
-                                {/* Card Content */}
-                                <div className="p-6 bg-[#0B1120]/50 font-mono text-sm text-gray-300 leading-relaxed whitespace-pre-wrap border-b border-white/5">
-                                    {task.output.content}
-                                </div>
+                                <div className="flex-1 space-y-3">
+                                    {task.status === 'processing' ? (
+                                        <div className="flex items-center gap-3 text-sm text-[#00e0ff] h-10 px-4">
+                                            <span className="relative flex h-2.5 w-2.5">
+                                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00e0ff] opacity-75"></span>
+                                                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#00e0ff]"></span>
+                                            </span>
+                                            Processing request...
+                                        </div>
+                                    ) : (
+                                        <div className="bg-[#0F172A] border border-white/10 rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/5">
+                                            {/* Summary Header */}
+                                            <div className="px-5 py-4 border-b border-white/5 bg-white/[0.02]">
+                                                <h3 className="font-semibold text-white text-[15px] mb-1">Execution Complete</h3>
+                                                <p className="text-sm text-gray-400">{task.output?.summary}</p>
+                                            </div>
 
-                                {/* Actions */}
-                                <div className="p-4 bg-[#0F172A] flex justify-end gap-3">
-                                    {task.output.actions.map((action: any, idx: number) => (
-                                        <button
-                                            key={idx}
-                                            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${action.primary
-                                                    ? 'bg-[#00e0ff] text-black hover:bg-[#00e0ff]/90 hover:shadow-[0_0_15px_#00e0ff40]'
-                                                    : 'border border-gray-700 hover:bg-white/5 text-gray-300'
-                                                }`}
-                                        >
-                                            {action.label}
-                                        </button>
-                                    ))}
+                                            {/* Structured Content */}
+                                            <div className="p-5 space-y-4">
+                                                {/* Steps List */}
+                                                {task.output?.steps && (
+                                                    <div className="space-y-2">
+                                                        {task.output.steps.map((step, idx) => (
+                                                            <div key={idx} className="flex gap-3 text-sm text-gray-300">
+                                                                <CheckCircle className="w-4 h-4 text-green-500 shrink-0 mt-0.5" />
+                                                                <span>{step}</span>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                )}
+
+                                                {/* Text Content / Artifact */}
+                                                {task.output?.content && (
+                                                    <div className="bg-black/30 rounded-lg p-4 font-mono text-xs text-gray-300 border border-white/5 leading-relaxed whitespace-pre-wrap">
+                                                        {task.output.content}
+                                                    </div>
+                                                )}
+
+                                                {/* Files */}
+                                                {task.output?.files && (
+                                                    <div className="flex gap-2 flex-wrap">
+                                                        {task.output.files.map((f, i) => (
+                                                            <div key={i} className="flex items-center gap-2 px-3 py-2 bg-[#1E293B] rounded border border-white/10 text-xs text-gray-300">
+                                                                <File className="w-3 h-3 text-[#00e0ff]" />
+                                                                {f.name}
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                )}
+                                            </div>
+
+                                            {/* Action Bar */}
+                                            <div className="px-5 py-4 bg-[#0B1120] border-t border-white/5 flex flex-wrap gap-2 justify-end">
+                                                {task.output?.actions.map((action, idx) => (
+                                                    <button
+                                                        key={idx}
+                                                        onClick={() => handleActionClick(task.id, idx)}
+                                                        disabled={action.status === 'done'}
+                                                        className={`px-4 py-2 rounded-lg text-xs font-semibold tracking-wide transition-all flex items-center gap-2 ${action.status === 'done'
+                                                                ? 'bg-green-500/10 text-green-500 border border-green-500/20 cursor-default'
+                                                                : action.primary
+                                                                    ? 'bg-[#00e0ff] text-black hover:bg-[#00e0ff]/90 hover:scale-[1.02] hover:shadow-[0_0_12px_#00e0ff50]'
+                                                                    : 'bg-white/5 text-gray-300 border border-white/10 hover:bg-white/10 hover:text-white'
+                                                            }`}
+                                                    >
+                                                        {action.status === 'done' && <CheckCircle className="w-3 h-3" />}
+                                                        {action.label}
+                                                    </button>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         </div>
                     ))}
 
-                    {isProcessing && (
-                        <div className="flex justify-start w-full max-w-3xl mx-auto">
-                            <div className="flex items-center gap-3 px-6 py-4 rounded-xl bg-[#00e0ff]/5 border border-[#00e0ff]/20 text-[#00e0ff] text-sm font-medium animate-pulse">
-                                <span className="w-2 h-2 bg-[#00e0ff] rounded-full animate-bounce" />
-                                Analyzing request...
-                            </div>
-                        </div>
-                    )}
-
-                    <div className="pb-32" /> {/* Spacer for bottom input */}
+                    <div className="pb-32" />
                 </div>
 
-                {/* Input Area (Floating) */}
-                <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-[#0F172A] via-[#0F172A] to-transparent z-20">
+                {/* --- INPUT AREA --- */}
+                <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-10 bg-gradient-to-t from-[#0B1120] via-[#0B1120] to-transparent z-20">
 
-                    {suggestionsVisible && tasks.length === 0 && (
-                        <div className="flex justify-center gap-3 mb-6 flex-wrap">
-                            <SuggestionChip icon={<FileText />} label="Draft Proposal" onClick={() => setCommand("Draft a proposal for client X")} />
-                            <SuggestionChip icon={<Clock />} label="Schedule Analysis" onClick={() => setCommand("Analyze my calendar for next week")} />
-                            <SuggestionChip icon={<Play />} label="Generate Content" onClick={() => setCommand("Generate 5 tweets about AI")} />
+                    {/* Contextual Suggestions */}
+                    {suggestionsVisible && !isProcessing && (
+                        <div className="flex justify-center flex-wrap gap-3 mb-6 max-w-4xl mx-auto opacity-0 animate-in slide-in-from-bottom-2 duration-700 delay-200 fade-in-0 fill-mode-forwards">
+                            {getSuggestions(activeAgentType).map((bg, idx) => (
+                                <SuggestionChip
+                                    key={idx}
+                                    icon={bg.icon}
+                                    label={bg.label}
+                                    onClick={() => setCommand(bg.prompt)}
+                                />
+                            ))}
                         </div>
                     )}
 
+                    {/* Proactive Toast */}
+                    {showProactiveToast && (
+                        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-full mb-4 bg-[#1E293B] border border-[#00e0ff]/30 text-gray-200 px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 animate-in fade-in slide-in-from-bottom-2 z-50">
+                            <Sparkles className="w-4 h-4 text-[#00e0ff] animate-pulse" />
+                            <span className="text-sm">Suggestion: Review the Q3 performance report?</span>
+                            <button className="text-xs bg-[#00e0ff]/10 text-[#00e0ff] px-2 py-1 rounded hover:bg-[#00e0ff]/20">Review</button>
+                            <button onClick={() => setShowProactiveToast(false)} className="ml-2 text-gray-500 hover:text-white">&times;</button>
+                        </div>
+                    )}
+
+                    {/* Main Input Field */}
                     <div className="max-w-3xl mx-auto relative group">
-                        <div className="absolute -inset-1 bg-gradient-to-r from-[#00e0ff] to-purple-600 rounded-2xl opacity-20 group-focus-within:opacity-50 transition-opacity blur-md" />
-                        <div className="relative flex items-center bg-[#1E293B] rounded-xl border border-white/10 shadow-2xl p-2">
+                        <div className="absolute -inset-[1px] bg-gradient-to-r from-[#00e0ff] via-purple-500 to-[#00e0ff] rounded-2xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-500 blur-sm" />
+                        <div className="relative flex items-center bg-[#0F172A] rounded-xl border border-white/10 shadow-2xl overflow-hidden">
                             <textarea
                                 value={command}
                                 onChange={(e) => setCommand(e.target.value)}
                                 onKeyDown={(e) => e.key === 'Enter' && !e.shiftKey && (e.preventDefault(), handleExecute())}
-                                placeholder="What should we accomplish today?"
-                                className="w-full bg-transparent border-none focus:ring-0 text-white placeholder:text-gray-500 px-4 py-3 min-h-[56px] resize-none"
+                                placeholder={`What should the ${activeAgent.name} accomplish?`}
+                                disabled={isProcessing}
+                                className="w-full bg-transparent border-none focus:ring-0 text-white placeholder:text-gray-500 px-5 py-4 min-h-[60px] max-h-[120px] resize-none text-[15px]"
                                 rows={1}
                             />
-                            <button
-                                onClick={handleExecute}
-                                disabled={!command.trim() || isProcessing}
-                                className="p-3 bg-[#00e0ff] hover:bg-[#00e0ff]/80 text-black rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                            >
-                                <Send className="w-5 h-5" />
-                            </button>
+                            <div className="pr-2">
+                                <button
+                                    onClick={handleExecute}
+                                    disabled={!command.trim() || isProcessing}
+                                    className="p-3 bg-[#00e0ff] text-black rounded-lg transition-all hover:bg-[#33e7ff] hover:shadow-[0_0_15px_#00e0ff40] disabled:opacity-30 disabled:cursor-not-allowed disabled:shadow-none"
+                                >
+                                    <Send className="w-5 h-5" />
+                                </button>
+                            </div>
                         </div>
                     </div>
-                    <p className="text-center text-xs text-gray-600 mt-4">AI Agents can make mistakes. Review specific outputs before approving.</p>
+                    <p className="text-center text-[11px] text-gray-600 mt-4 uppercase tracking-widest font-medium">
+                        Enterprise AI Orchestrator v2.1 • Human Approval Required for Actions
+                    </p>
+                </div>
+
+            </div>
+
+            {/* --- RIGHT SIDEBAR (Context) --- */}
+            <div className="w-80 border-l border-white/5 bg-[#0F172A]/50 backdrop-blur-sm hidden 2xl:block p-6">
+                <div className="mb-8">
+                    <h3 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4">System Status</h3>
+                    <div className="space-y-3">
+                        <div className="p-3 bg-white/5 rounded-lg border border-white/5 flex items-center justify-between">
+                            <span className="text-sm text-gray-400">Memory Usage</span>
+                            <span className="text-xs font-mono text-[#00e0ff]">12%</span>
+                        </div>
+                        <div className="p-3 bg-white/5 rounded-lg border border-white/5 flex items-center justify-between">
+                            <span className="text-sm text-gray-400">Context Window</span>
+                            <span className="text-xs font-mono text-green-500">4k / 128k</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4">Pending Approvals</h3>
+                    <div className="p-4 rounded-xl border border-yellow-500/20 bg-yellow-500/5">
+                        <div className="flex items-start gap-3">
+                            <AlertCircle className="w-4 h-4 text-yellow-500 shrink-0 mt-0.5" />
+                            <div>
+                                <p className="text-sm text-yellow-200 font-medium mb-1">Stripe Payout</p>
+                                <p className="text-xs text-yellow-500/80 mb-3">Requires manual confirmation.</p>
+                                <button className="text-xs bg-yellow-500/20 text-yellow-500 px-3 py-1.5 rounded items-center hover:bg-yellow-500/30 transition">Review</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            {/* Right Context Panel (Hidden on small screens) */}
-            <div className="w-80 border-l border-white/5 bg-[#0F172A]/30 backdrop-blur-sm hidden xl:block p-6">
-                <h3 className="font-semibold text-sm text-gray-400 uppercase tracking-widest mb-6 border-b border-white/5 pb-2">Status</h3>
-
-                <div className="space-y-6">
-                    {/* Status Card 1 */}
-                    <div className="bg-[#1E293B]/50 p-4 rounded-xl border border-white/5">
-                        <div className="flex items-center gap-3 mb-2">
-                            <div className="p-1.5 bg-green-500/20 rounded text-green-500"><CheckCircle className="w-4 h-4" /></div>
-                            <span className="text-sm font-medium">System Healthy</span>
-                        </div>
-                        <div className="w-full bg-gray-800 h-1.5 rounded-full overflow-hidden">
-                            <div className="bg-green-500 h-full w-[98%]" />
-                        </div>
-                        <div className="flex justify-between text-xs text-gray-500 mt-2">
-                            <span>Uptime</span>
-                            <span>99.9%</span>
-                        </div>
-                    </div>
-
-                    {/* Connected Tools */}
-                    <div>
-                        <h4 className="text-xs font-semibold text-gray-500 mb-3">Active Integrations</h4>
-                        <div className="space-y-2">
-                            <IntegrationRow name="Gmail" status="connected" />
-                            <IntegrationRow name="Notion" status="connected" />
-                            <IntegrationRow name="Slack" status="syncing" />
-                        </div>
-                    </div>
-
-                    {/* Memory Usage */}
-                    <div>
-                        <h4 className="text-xs font-semibold text-gray-500 mb-3">Context Window</h4>
-                        <div className="flex items-end gap-1 h-12">
-                            <div className="w-1/5 bg-[#00e0ff]/20 h-[40%] rounded-t-sm" />
-                            <div className="w-1/5 bg-[#00e0ff]/40 h-[70%] rounded-t-sm" />
-                            <div className="w-1/5 bg-[#00e0ff]/60 h-[50%] rounded-t-sm" />
-                            <div className="w-1/5 bg-[#00e0ff]/30 h-[30%] rounded-t-sm" />
-                            <div className="w-1/5 bg-[#00e0ff]/10 h-[20%] rounded-t-sm" />
-                        </div>
-                        <p className="text-right text-xs text-gray-600 mt-1">2.4k tokens used</p>
-                    </div>
-                </div>
-            </div>
         </div>
     );
 }
+
+// --- HELPERS ---
 
 function SuggestionChip({ icon, label, onClick }: any) {
     return (
         <button
             onClick={onClick}
-            className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#1E293B] border border-white/10 hover:border-[#00e0ff]/50 hover:bg-[#1E293B]/80 text-sm font-medium text-gray-300 hover:text-white transition-all shadow-lg shadow-black/20"
+            className="flex items-center gap-2.5 px-5 py-3 rounded-full bg-[#1E293B] border border-white/10 hover:border-[#00e0ff]/50 hover:bg-[#1E293B]/80 text-sm font-medium text-gray-300 hover:text-white transition-all shadow-lg hover:shadow-[#00e0ff]/10 hover:-translate-y-0.5"
         >
             <span className="text-[#00e0ff]">{icon}</span>
             {label}
@@ -230,14 +362,69 @@ function SuggestionChip({ icon, label, onClick }: any) {
     )
 }
 
-function IntegrationRow({ name, status }: any) {
-    return (
-        <div className="flex items-center justify-between p-2 rounded hover:bg-white/5 transition-colors cursor-pointer group">
-            <div className="flex items-center gap-2">
-                <div className={`w-2 h-2 rounded-full ${status === 'connected' ? 'bg-green-500' : 'bg-yellow-500 animate-pulse'}`} />
-                <span className="text-sm text-gray-300 group-hover:text-white">{name}</span>
-            </div>
-            <span className="text-[10px] uppercase text-gray-600 font-medium">{status}</span>
-        </div>
-    )
+function getSuggestions(type: AgentType) {
+    switch (type) {
+        case 'content':
+            return [
+                { icon: <MessageSquare className="w-4 h-4" />, label: "Draft LinkedIn Post", prompt: "Draft a viral LinkedIn post about AI agents" },
+                { icon: <Play className="w-4 h-4" />, label: "Video Script", prompt: "Create a 60s video script for product launch" },
+                { icon: <FileText className="w-4 h-4" />, label: "Newsletter Outline", prompt: "Generate outline for weekly newsletter" },
+            ];
+        case 'support':
+            return [
+                { icon: <CheckCircle className="w-4 h-4" />, label: "Resolve Ticket #429", prompt: "Suggest resolution for ticket #429 (Billing Issue)" },
+                { icon: <BookOpen className="w-4 h-4" />, label: "Update FAQ", prompt: "Draft new FAQ entry for 'Refund Policy'" },
+            ];
+        case 'automation':
+            return [
+                { icon: <Zap className="w-4 h-4" />, label: "Optimize Workflow", prompt: "Analyze the 'Lead Intake' workflow for bottlenecks" },
+                { icon: <Clock className="w-4 h-4" />, label: "Daily Summary", prompt: "Run daily automation summary report" },
+            ];
+        default: // Business
+            return [
+                { icon: <FileText className="w-4 h-4" />, label: "Proposal Draft", prompt: "Draft a proposal for client Acme Corp" },
+                { icon: <Briefcase className="w-4 h-4" />, label: "Market Analysis", prompt: "Analyze competitors in AI space" },
+                { icon: <Clock className="w-4 h-4" />, label: "Schedule Meeting", prompt: "Find time for team sync next week" },
+            ];
+    }
 }
+
+function generateMockResponse(type: AgentType, query: string): TaskOutput {
+    // Simulated Responses based on Agent Persona
+    if (type === 'content') {
+        return {
+            summary: "I've drafted 3 content variations based on your request.",
+            steps: ["Analyzed trending topics", "Drafted 3 hooks", "Generated body copy"],
+            content: "Option 1 (Viral):\nSecret to scaling? Automation.\n\nOption 2 (Educational):\nHere is how AI is changing workforce dynamics...",
+            actions: [
+                { label: "Post to LinkedIn", intent: "post_linkedin", primary: true },
+                { label: "Save to Notion", intent: "save_notion" }
+            ]
+        }
+    }
+    if (type === 'support') {
+        return {
+            summary: "Analyzed ticket history and drafted a response.",
+            steps: ["Retrieved user context", "Checked billing status", "Drafted refund confirmation"],
+            content: "Hi [User],\n\nI've confirmed the double charge. I have processed the refund of $49...",
+            actions: [
+                { label: "Send Reply", intent: "send_reply", primary: true },
+                { label: "Escalate to Human", intent: "escalate" }
+            ]
+        }
+    }
+    // Default Business
+    return {
+        summary: "Proposal outline generated successfully.",
+        steps: ["Researched client background", "Outlined key deliverables", "Estimated timeline"],
+        content: "# Proposal for [Client]\n\n## Executive Summary\nImplementing autonomous agents will reduce overhead by 40%.\n\n## Timeline\nPhase 1: Deep Dive...",
+        files: [{ name: "proposal_draft_v1.pdf", type: "pdf" }],
+        actions: [
+            { label: "Send via Email", intent: "email_proposal", primary: true },
+            { label: "Export as PDF", intent: "export_pdf" }
+        ]
+    }
+}
+
+// Simple Icon stub for getSuggestions to avoid missing import
+function BookOpen(props: any) { return <FileText {...props} />; }

@@ -19,13 +19,31 @@ export function PublicHeader() {
                 <div className="flex items-center gap-6">
                     <nav className="hidden md:flex items-center gap-6">
                         <Link
+                            href="/chatbots"
+                            className={cn(
+                                "text-sm font-medium transition-colors hover:text-primary",
+                                pathname.startsWith("/chatbots") ? "text-primary" : "text-muted-foreground"
+                            )}
+                        >
+                            AI Workforce
+                        </Link>
+                        <Link
+                            href="/about"
+                            className={cn(
+                                "text-sm font-medium transition-colors hover:text-primary",
+                                pathname === "/about" ? "text-primary" : "text-muted-foreground"
+                            )}
+                        >
+                            About
+                        </Link>
+                        <Link
                             href="/ai-workers"
                             className={cn(
                                 "text-sm font-medium transition-colors hover:text-primary",
                                 pathname === "/ai-workers" ? "text-primary" : "text-muted-foreground"
                             )}
                         >
-                            AI Workers
+                            Marketplace
                         </Link>
                     </nav>
                     <div className="flex items-center gap-4">

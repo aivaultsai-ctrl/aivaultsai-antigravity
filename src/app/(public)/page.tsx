@@ -11,6 +11,7 @@ import {
     Check
 } from 'lucide-react';
 import { PublicHeader } from '@/components/layout/PublicHeader';
+import SolutionsPricing from '@/components/landing/SolutionsPricing';
 
 export default function LandingPage() {
     return (
@@ -52,6 +53,9 @@ export default function LandingPage() {
                     </div>
                 </div>
             </section>
+
+            {/* --- SOLUTIONS & PRICING --- */}
+            <SolutionsPricing />
 
             {/* --- POSITIONING STATEMENT --- */}
             <section className="py-24 bg-[#0B1120] relative border-y border-white/5">

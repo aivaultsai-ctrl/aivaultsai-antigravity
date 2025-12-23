@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
-import { Check, X, ArrowRight, Bot, Zap, Shield, ChevronRight } from "lucide-react";
+import React from "react";
+import Link from "next/link";
+import { Check, Zap, Shield, Bot, ChevronRight, ArrowRight } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,12 +10,6 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 
 // --- CONFIGURATION ---
-const STRIPE_LINKS = {
-    starter: "https://buy.stripe.com/dRmfZh7Ef81MfXv01adwc06",
-    pro: "https://buy.stripe.com/cNieVdf6H5TE7qZ29idwc07",
-    enterprise: "https://buy.stripe.com/7sYcN5e2Dfue9z76pydwc05"
-};
-
 const CALENDAR_LINK = "https://calendly.com/yourname/30min";
 
 // --- DATA: SOLUTIONS ---
@@ -70,7 +65,6 @@ const pricingPlans = [
         period: "/maand",
         description: "Start small and scale your autonomous workforce.",
         features: ["1 autonomous AI agent", "24/7 operation and unlimited tasks", "Email support", "Dashboard access", "Upgrade anytime"],
-        cta: "Deploy Now",
         popular: false
     },
     {
@@ -80,7 +74,6 @@ const pricingPlans = [
         period: "/maand",
         description: "For growing businesses needing power.",
         features: ["3 AI agents simultaneously", "Multi-agent orchestration", "Advanced workflows", "Priority support", "API access"],
-        cta: "Deploy Now",
         popular: true
     },
     {
@@ -90,19 +83,11 @@ const pricingPlans = [
         period: "/maand",
         description: "Unlimited scale for serious operations.",
         features: ["Unlimited AI agents", "Custom development", "Dedicated account manager", "White-label options", "SLA guarantee"],
-        cta: "Deploy Now",
         popular: false
     }
 ];
 
 export default function SolutionsPricing() {
-
-    // Handlers
-    const handlePurchase = (planId: string) => {
-        if (planId === "starter") window.location.href = STRIPE_LINKS.starter;
-        if (planId === "pro") window.location.href = STRIPE_LINKS.pro;
-        if (planId === "enterprise") window.location.href = STRIPE_LINKS.enterprise;
-    };
 
     const scrollToPricing = () => {
         document.getElementById("pricing-section")?.scrollIntoView({ behavior: "smooth" });
@@ -183,7 +168,7 @@ export default function SolutionsPricing() {
                     </div>
                 </div>
 
-                {/* --- COMPARISON SECTION (Simplified) --- */}
+                {/* --- COMPARISON SECTION --- */}
                 <div className="bg-zinc-900/50 rounded-2xl p-8 border border-zinc-800">
                     <h3 className="text-2xl font-bold text-center mb-8">Human vs. AI Employee</h3>
                     <div className="grid grid-cols-3 gap-4 text-center text-sm md:text-base">
@@ -191,12 +176,10 @@ export default function SolutionsPricing() {
                         <div className="font-bold text-zinc-300">Human</div>
                         <div className="font-bold text-indigo-400">AI Employee</div>
 
-                        {/* Row 1 */}
                         <div className="text-zinc-500 py-2 border-b border-zinc-800">Availability</div>
                         <div className="text-zinc-300 py-2 border-b border-zinc-800">8 hrs/day</div>
                         <div className="text-indigo-400 py-2 border-b border-zinc-800">24/7/365</div>
 
-                        {/* Row 2 */}
                         <div className="text-zinc-500 py-2 border-b border-zinc-800">Cost</div>
                         <div className="text-zinc-300 py-2 border-b border-zinc-800">€3k - €8k /mo</div>
                         <div className="text-indigo-400 py-2 border-b border-zinc-800">€39.99 - €79.99 /mo</div>
@@ -246,12 +229,13 @@ export default function SolutionsPricing() {
                                     </ul>
                                 </CardContent>
                                 <CardFooter>
-                                    <Button
-                                        onClick={() => handlePurchase(plan.id)}
-                                        className={`w-full ${plan.popular ? 'bg-indigo-600 hover:bg-indigo-700' : 'bg-zinc-800 hover:bg-zinc-700'} text-white`}
+                                    {/* UPDATED CTA TO CONTACT FORM */}
+                                    <Link
+                                        href={`/contact?plan=${plan.id}`}
+                                        className="w-full py-4 rounded-xl bg-[#00e0ff] text-zinc-950 font-bold hover:bg-[#33e7ff] hover:shadow-[0_0_30px_#00e0ff50] transition-all flex items-center justify-center gap-2 mb-6 shadow-md"
                                     >
-                                        {plan.cta}
-                                    </Button>
+                                        Get Started <ArrowRight className="w-4 h-4" />
+                                    </Link>
                                 </CardFooter>
                             </Card>
                         ))}

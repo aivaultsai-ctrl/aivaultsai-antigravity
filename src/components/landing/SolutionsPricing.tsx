@@ -10,11 +10,12 @@ import { Separator } from "@/components/ui/separator";
 
 // --- CONFIGURATION ---
 const STRIPE_LINKS = {
-    starter: "https://buy.stripe.com/test_123...", // REPLACE THIS WITH YOUR REAL STRIPE LINK
-    pro: "https://buy.stripe.com/test_456...",     // REPLACE THIS WITH YOUR REAL STRIPE LINK
+    starter: "https://buy.stripe.com/dRmfZh7Ef81MfXv01adwc06",
+    pro: "https://buy.stripe.com/cNieVdf6H5TE7qZ29idwc07",
+    enterprise: "https://buy.stripe.com/7sYcN5e2Dfue9z76pydwc05"
 };
 
-const CALENDAR_LINK = "https://calendly.com/yourname/30min"; // REPLACE THIS
+const CALENDAR_LINK = "https://calendly.com/yourname/30min";
 
 // --- DATA: SOLUTIONS ---
 const solutions = [
@@ -65,31 +66,31 @@ const pricingPlans = [
     {
         id: "starter",
         name: "Starter",
-        price: "$99",
-        period: "/mo",
+        price: "€39,99",
+        period: "/maand",
         description: "Start small and scale your autonomous workforce.",
-        features: ["1 AI Employee", "Basic Knowledge Base", "Email Support", "Standard Response Time"],
-        cta: "Get Started",
+        features: ["1 autonomous AI agent", "24/7 operation and unlimited tasks", "Email support", "Dashboard access", "Upgrade anytime"],
+        cta: "Deploy Now",
         popular: false
     },
     {
         id: "pro",
-        name: "Pro",
-        price: "$299",
-        period: "/mo",
+        name: "Professional",
+        price: "€79,99",
+        period: "/maand",
         description: "For growing businesses needing power.",
-        features: ["3 AI Employees", "Advanced Logic", "CRM Integration", "Priority Support", "Custom Workflows"],
-        cta: "Get Started",
+        features: ["3 AI agents simultaneously", "Multi-agent orchestration", "Advanced workflows", "Priority support", "API access"],
+        cta: "Deploy Now",
         popular: true
     },
     {
         id: "enterprise",
         name: "Enterprise",
-        price: "Custom",
-        period: "/mo",
+        price: "€249,99",
+        period: "/maand",
         description: "Unlimited scale for serious operations.",
-        features: ["Unlimited AI Employees", "Dedicated Account Manager", "Custom LLM Training", "SLA Guarantees", "Full API Access"],
-        cta: "Talk to Sales",
+        features: ["Unlimited AI agents", "Custom development", "Dedicated account manager", "White-label options", "SLA guarantee"],
+        cta: "Deploy Now",
         popular: false
     }
 ];
@@ -100,7 +101,7 @@ export default function SolutionsPricing() {
     const handlePurchase = (planId: string) => {
         if (planId === "starter") window.location.href = STRIPE_LINKS.starter;
         if (planId === "pro") window.location.href = STRIPE_LINKS.pro;
-        if (planId === "enterprise") window.location.href = CALENDAR_LINK;
+        if (planId === "enterprise") window.location.href = STRIPE_LINKS.enterprise;
     };
 
     const scrollToPricing = () => {
@@ -198,7 +199,7 @@ export default function SolutionsPricing() {
                         {/* Row 2 */}
                         <div className="text-zinc-500 py-2 border-b border-zinc-800">Cost</div>
                         <div className="text-zinc-300 py-2 border-b border-zinc-800">$3k - $8k /mo</div>
-                        <div className="text-indigo-400 py-2 border-b border-zinc-800">$99 - $499 /mo</div>
+                        <div className="text-indigo-400 py-2 border-b border-zinc-800">€39.99 - €79.99 /mo</div>
                     </div>
                 </div>
 

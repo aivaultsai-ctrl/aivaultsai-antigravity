@@ -198,7 +198,7 @@ export default function SolutionsPricing() {
 
                         {/* Row 2 */}
                         <div className="text-zinc-500 py-2 border-b border-zinc-800">Cost</div>
-                        <div className="text-zinc-300 py-2 border-b border-zinc-800">$3k - $8k /mo</div>
+                        <div className="text-zinc-300 py-2 border-b border-zinc-800">€3k - €8k /mo</div>
                         <div className="text-indigo-400 py-2 border-b border-zinc-800">€39.99 - €79.99 /mo</div>
                     </div>
                 </div>

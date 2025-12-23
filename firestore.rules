@@ -29,9 +29,17 @@ service cloud.firestore {
       allow write: if request.auth != null;
     }
     
-    // Leads
+    // Leads (Legacy)
     match /leads/{leadId} {
       allow read, write: if request.auth != null;
+    }
+
+    // Advice Leads (New System - backend only writing mostly, but let's allow secure access)
+    match /advice_leads/{leadId} {
+       // Since the API uses firebase-admin, it bypasses rules.
+       // Client SDKs (if used):
+       allow create: if request.auth != null;
+       allow read, update: if request.auth != null && request.auth.token.admin == true;
     }
 
     // Workspaces

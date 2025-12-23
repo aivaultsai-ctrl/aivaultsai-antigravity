@@ -4,9 +4,15 @@ import { getAuth } from "firebase-admin/auth";
 import { getFirestore } from "firebase-admin/firestore";
 
 // Service Account setup from environment variables
-const serviceAccount = process.env.FIREBASE_SERVICE_ACCOUNT_KEY
-    ? JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY)
-    : undefined;
+// SAFELY parse the JSON to prevent app crash if env var is malformed
+let serviceAccount;
+try {
+    serviceAccount = process.env.FIREBASE_SERVICE_ACCOUNT_KEY
+        ? JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY)
+        : undefined;
+} catch (error) {
+    console.warn("⚠️ Failed to parse FIREBASE_SERVICE_ACCOUNT_KEY. Admin SDK may fail.");
+}
 
 let app: App;
 
@@ -17,12 +23,8 @@ if (!getApps().length) {
             projectId: serviceAccount.project_id || process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
         });
     } else {
-        // Fallback for when no service account is present (e.g. dev/build time if strictly needed, or throw error)
-        // For production, the service key is mandatory.
-        // We initialize with default credentials (useful for GCP/Cloud Run) or empty options if just testing locally without admin.
-        // But for lead capture, we need admin.
+        // Fallback: This allows the app to start even if credentials are broken (logs error at runtime instead of crash)
         app = initializeApp();
-        console.warn("Firebase Admin initialized without explicitly provided service account key. Ensure GOOGLE_APPLICATION_CREDENTIALS is set if in production.");
     }
 } else {
     app = getApps()[0];
@@ -38,7 +40,6 @@ export async function saveAdviceLead(data: {
     businessDescription: string;
     advice: string;
 }) {
-    // If email is missing, we still save it as 'anonymous_visitor_{timestamp}' for stats
     const leadData = {
         ...data,
         email: data.email || `anon_${Date.now()}@domain.com`,
@@ -53,7 +54,6 @@ export async function saveAdviceLead(data: {
         return leadRef.id;
     } catch (error) {
         console.error("Error saving lead to Firestore:", error);
-        // We do not re-throw because we don't want to break the user experience if logging fails
         return null;
     }
 }

@@ -5,6 +5,9 @@ import { db, adminAuth } from '@/lib/firebase-admin';
 import { resend } from '@/lib/resend';
 import Stripe from 'stripe';
 
+// Force dynamic to prevent static generation errors for webhooks
+export const dynamic = 'force-dynamic';
+
 export async function POST(req: Request) {
     const body = await req.text();
     const signature = headers().get('stripe-signature');
@@ -14,7 +17,8 @@ export async function POST(req: Request) {
     // 1. Validate Signature
     try {
         if (!process.env.STRIPE_WEBHOOK_SECRET || !signature) {
-            throw new Error('Missing Stripe environment variables');
+            console.error('Missing Stripe Config: Secret or Signature');
+            return NextResponse.json({ error: 'Missing Stripe environment variables' }, { status: 400 });
         }
         event = stripe.webhooks.constructEvent(
             body,
@@ -33,7 +37,6 @@ export async function POST(req: Request) {
             await handleCheckoutCompleted(session);
         }
 
-        // Return 200 OK fast
         return NextResponse.json({ received: true });
 
     } catch (error: any) {
@@ -46,14 +49,13 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
     // 3. Extract Data
     const customerEmail = session.customer_details?.email;
     const customerName = session.customer_details?.name || 'Customer';
-    const amountTotal = session.amount_total; // e.g., 3999 for €39.99
+    const amountTotal = session.amount_total;
 
     if (!customerEmail) {
         throw new Error('No email found in session');
     }
 
-    // Determine Plan based on amount or metadata
-    // Ideally use session.metadata.tier, but falling back to simple amount check if metadata missing
+    // Determine Plan
     let tier = 'starter';
     const priceCents = amountTotal || 0;
 
@@ -61,13 +63,12 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
     else if (priceCents >= 7900) tier = 'professional';
     else tier = 'starter';
 
-    // 4. Provision User in Firebase
     console.log(`Provisioning user ${customerEmail} for plan ${tier}`);
 
     let uid: string;
     let isNewUser = false;
 
-    // A. Check if user exists in Auth
+    // A. Check if user exists
     try {
         const userRecord = await adminAuth.getUserByEmail(customerEmail);
         uid = userRecord.uid;
@@ -79,7 +80,7 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
             const newUser = await adminAuth.createUser({
                 email: customerEmail,
                 displayName: customerName,
-                emailVerified: true // Trust Stripe verification
+                emailVerified: true
             });
             uid = newUser.uid;
             console.log(`User created: ${uid}`);
@@ -88,24 +89,24 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
         }
     }
 
-    // C. Set Custom Claims (Role Based Access)
+    // C. Set Custom Claims (Safely handle potentially complex types by forcing string)
+    const stripeCustomerId = typeof session.customer === 'string' ? session.customer : session.customer?.id || '';
+
     await adminAuth.setCustomUserClaims(uid, {
         plan: tier,
-        stripeCustomerId: session.customer
+        stripeCustomerId: stripeCustomerId
     });
 
     // D. Create/Update Firestore Document
-    // Schema: users/{uid}
     const userDoc = {
         uid: uid,
         email: customerEmail,
         displayName: customerName,
         plan: tier,
         status: 'active',
-        stripeCustomerId: session.customer as string,
-        subscriptionId: session.subscription as string,
+        stripeCustomerId: stripeCustomerId,
+        subscriptionId: typeof session.subscription === 'string' ? session.subscription : session.subscription?.id || '',
         updatedAt: new Date(),
-        // Only set createdAt if new
         ...(isNewUser && { createdAt: new Date() })
     };
 
@@ -114,12 +115,11 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
     // 5. Send Welcome Email
     if (isNewUser) {
         await sendWelcomeEmail(customerEmail, customerName, tier);
-    } else {
-        // Optional: Send "Upgrade Confirmed" email could go here
     }
 }
 
 async function sendWelcomeEmail(email: string, name: string, tier: string) {
+    const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://aivaultsai.one';
     try {
         await resend.emails.send({
             from: 'AIVaults <onboarding@aivaultsai.one>',
@@ -131,7 +131,7 @@ async function sendWelcomeEmail(email: string, name: string, tier: string) {
                 <p>Your <strong>${tier}</strong> plan has been successfully activated.</p>
                 <p>We have automatically created your account.</p>
                 <br/>
-                <a href="${process.env.NEXT_PUBLIC_APP_URL}/auth/signin" style="background-color: #00e0ff; color: #000; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">
+                <a href="${appUrl}/auth/signin" style="background-color: #00e0ff; color: #000; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">
                     Access Command Center
                 </a>
                 <p style="margin-top: 20px; font-size: 14px; color: #666;">
@@ -143,6 +143,5 @@ async function sendWelcomeEmail(email: string, name: string, tier: string) {
         console.log(`Welcome email sent to ${email}`);
     } catch (err) {
         console.error('Failed to send email:', err);
-        // Non-fatal
     }
 }

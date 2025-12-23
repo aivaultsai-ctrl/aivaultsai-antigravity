@@ -72,11 +72,13 @@ export default function AgentsPage() {
         setSuggestionsVisible(false);
         setShowProactiveToast(false);
 
-        // 1. Create a "Processing" task
         const tempId = Date.now();
+        const currentCommand = command; // Capture for async usage
+
+        // 1. Optimistic Update
         setTasks(prev => [{
             id: tempId,
-            query: command,
+            query: currentCommand,
             agent: activeAgentType,
             status: 'processing',
             timestamp: Date.now()
@@ -84,22 +86,67 @@ export default function AgentsPage() {
 
         setCommand('');
 
-        // 2. Simulate Backend / AI Agent latency
-        await new Promise(resolve => setTimeout(resolve, 2500));
+        try {
+            let output: TaskOutput;
 
-        // 3. Update task with response (Mock Outcome based on Agent Type)
-        setTasks(prev => prev.map(t => {
-            if (t.id === tempId) {
-                return {
-                    ...t,
-                    status: 'completed',
-                    output: generateMockResponse(activeAgentType, t.query)
+            // 2. Real API Call for Business Agent
+            if (activeAgentType === 'business') {
+                const res = await fetch('/api/advice', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        business: "General Business Context", // In real app, load from user profile
+                        problem: currentCommand,
+                        goal: "Provide strategic advice and actionable steps"
+                    })
+                });
+
+                if (!res.ok) throw new Error("API Failed");
+
+                const data = await res.json();
+                output = {
+                    summary: "I've analyzed your request and generated a strategic plan.",
+                    steps: ["Analyzed business context", "Identified key constraints", "Formulated recommendation"],
+                    content: data.advice, // The real Gemini response
+                    actions: [
+                        { label: "Save to Notes", intent: "save_notes", primary: true },
+                        { label: "Share with Team", intent: "share_team" }
+                    ]
                 };
+            } else {
+                // 3. Simulated Latency & Mock for other agents
+                await new Promise(resolve => setTimeout(resolve, 2500));
+                output = generateMockResponse(activeAgentType, currentCommand);
             }
-            return t;
-        }));
 
-        setIsProcessing(false);
+            // 4. Update Task with Success
+            setTasks(prev => prev.map(t => {
+                if (t.id === tempId) {
+                    return { ...t, status: 'completed', output };
+                }
+                return t;
+            }));
+
+        } catch (error) {
+            console.error("Agent Error:", error);
+            // Error State
+            setTasks(prev => prev.map(t => {
+                if (t.id === tempId) {
+                    return {
+                        ...t,
+                        status: 'error',
+                        output: {
+                            summary: "An error occurred while processing your request.",
+                            content: "Please try again later or check your connection.",
+                            actions: [{ label: "Retry", intent: "retry", primary: true }]
+                        }
+                    };
+                }
+                return t;
+            }));
+        } finally {
+            setIsProcessing(false);
+        }
     };
 
     const handleActionClick = (taskId: number, actionIndex: number) => {
@@ -184,6 +231,12 @@ export default function AgentsPage() {
                                             </span>
                                             Processing request...
                                         </div>
+                                    ) : task.status === 'error' ? (
+                                        <div className="bg-red-900/10 border border-red-500/20 p-4 rounded-xl text-red-400 text-sm">
+                                            <p className="font-bold flex items-center gap-2"><AlertCircle className="w-4 h-4" /> Execution Failed</p>
+                                            <p className="mt-1 opacity-80">{task.output?.summary}</p>
+                                            <p className="mt-1 opacity-60 text-xs">{task.output?.content}</p>
+                                        </div>
                                     ) : (
                                         <div className="bg-[#0F172A] border border-white/10 rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/5">
                                             {/* Summary Header */}
@@ -234,10 +287,10 @@ export default function AgentsPage() {
                                                         onClick={() => handleActionClick(task.id, idx)}
                                                         disabled={action.status === 'done'}
                                                         className={`px-4 py-2 rounded-lg text-xs font-semibold tracking-wide transition-all flex items-center gap-2 ${action.status === 'done'
-                                                                ? 'bg-green-500/10 text-green-500 border border-green-500/20 cursor-default'
-                                                                : action.primary
-                                                                    ? 'bg-[#00e0ff] text-black hover:bg-[#00e0ff]/90 hover:scale-[1.02] hover:shadow-[0_0_12px_#00e0ff50]'
-                                                                    : 'bg-white/5 text-gray-300 border border-white/10 hover:bg-white/10 hover:text-white'
+                                                            ? 'bg-green-500/10 text-green-500 border border-green-500/20 cursor-default'
+                                                            : action.primary
+                                                                ? 'bg-[#00e0ff] text-black hover:bg-[#00e0ff]/90 hover:scale-[1.02] hover:shadow-[0_0_12px_#00e0ff50]'
+                                                                : 'bg-white/5 text-gray-300 border border-white/10 hover:bg-white/10 hover:text-white'
                                                             }`}
                                                     >
                                                         {action.status === 'done' && <CheckCircle className="w-3 h-3" />}

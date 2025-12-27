@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "result": [
+    {
+      "name": "projects/aivaultsai-bd716/webApps/1:931548628374:web:3b0c57f19465c06490c9b7",
+      "displayName": "aivaultsai-one",
+      "platform": "WEB",
+      "appId": "1:931548628374:web:3b0c57f19465c06490c9b7",
+      "namespace": "ZTE3YTkwOTctZjI1Mi00Njc1LWI5NjMtZDVlMWVmMTkyOWUy",
+      "apiKeyId": "88325287-4ebf-478c-8d12-795ae5b90724",
+      "state": "ACTIVE",
+      "expireTime": "1970-01-01T00:00:00Z"
+    }
+  ]
+}

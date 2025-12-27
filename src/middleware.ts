@@ -1,12 +1,21 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
+
 export function middleware(request: NextRequest) {
     // Simple path-based middleware
     // Real auth check happens in client side context for Phase 2
     // or via checking __session cookie if we implement server-side session management later.
 
+    // Allow API routes and Public
+    if (request.nextUrl.pathname.startsWith('/api/') || request.nextUrl.pathname.startsWith('/login')) {
+        return NextResponse.next();
+    }
+
     const protectedRoutes = ["/dashboard"];
+    // Explicitly disabling chat protection in middleware for now to fix loop
+    // const protectedRoutes = ["/dashboard", "/chat"]; 
+
     const isProtected = protectedRoutes.some((path) =>
         request.nextUrl.pathname.startsWith(path)
     );

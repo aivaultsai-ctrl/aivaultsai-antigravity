@@ -1,0 +1,60 @@
+{
+  "version": 3,
+  "middleware": {
+    "/": {
+      "files": [
+        "server/edge-runtime-webpack.js",
+        "server/src/middleware.js"
+      ],
+      "name": "src/middleware",
+      "page": "/",
+      "matchers": [
+        {
+          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/dashboard(?:\\/((?:[^\\/#\\?]+?)(?:\\/(?:[^\\/#\\?]+?))*))?(.json)?[\\/#\\?]?$",
+          "originalSource": "/dashboard/:path*"
+        }
+      ],
+      "wasm": [],
+      "assets": [],
+      "env": {
+        "__NEXT_BUILD_ID": "PSIIBsA-MU3BVUVvUE_lX",
+        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "3PbVzWL+xvJb7+Ta04u6I/py3BErLjjZZt+QuZV3/rc=",
+        "__NEXT_PREVIEW_MODE_ID": "9ccd73846fe2b10515e8a1d842c9fdd9",
+        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "2a8b7c4bc0f22ed41f8a4cad29ebd4f84c28b396c25714658dc85e88b06320a2",
+        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "791dd00114a17d84045e8a5e6b654e3ab4847b4daebb50cdc602d1cf2f3b2d10"
+      }
+    }
+  },
+  "functions": {
+    "/api/workers/content/route": {
+      "files": [
+        "server/middleware-build-manifest.js",
+        "server/middleware-react-loadable-manifest.js",
+        "server/next-font-manifest.js",
+        "server/interception-route-rewrite-manifest.js",
+        "server/edge-runtime-webpack.js",
+        "server/app/api/workers/content/route.js"
+      ],
+      "name": "app/api/workers/content/route",
+      "page": "/api/workers/content/route",
+      "matchers": [
+        {
+          "regexp": "^/api/workers/content$",
+          "originalSource": "/api/workers/content"
+        }
+      ],
+      "wasm": [],
+      "assets": [],
+      "env": {
+        "__NEXT_BUILD_ID": "PSIIBsA-MU3BVUVvUE_lX",
+        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "3PbVzWL+xvJb7+Ta04u6I/py3BErLjjZZt+QuZV3/rc=",
+        "__NEXT_PREVIEW_MODE_ID": "9ccd73846fe2b10515e8a1d842c9fdd9",
+        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "2a8b7c4bc0f22ed41f8a4cad29ebd4f84c28b396c25714658dc85e88b06320a2",
+        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "791dd00114a17d84045e8a5e6b654e3ab4847b4daebb50cdc602d1cf2f3b2d10"
+      }
+    }
+  },
+  "sortedMiddleware": [
+    "/"
+  ]
+}

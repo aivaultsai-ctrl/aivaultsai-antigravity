@@ -1,0 +1,22 @@
+{
+  "projects": {
+    "default": "clipvaultapi"
+  },
+  "targets": {
+    "aivaultsai-bd716": {
+      "hosting": {
+        "aivaultsai": [
+          "aivaultsai-bd716"
+        ]
+      }
+    },
+    "clipvaultapi": {
+      "hosting": {
+        "aivaultsai-web": [
+          "aivaultsai-web"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

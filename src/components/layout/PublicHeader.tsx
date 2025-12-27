@@ -54,6 +54,15 @@ export function PublicHeader() {
                         >
                             About
                         </Link>
+                        <Link
+                            href="/contact"
+                            className={cn(
+                                "text-sm font-medium transition-colors hover:text-primary",
+                                pathname === "/contact" ? "text-primary" : "text-muted-foreground"
+                            )}
+                        >
+                            Contact
+                        </Link>
                     </nav>
                     <div className="flex items-center gap-4">
                         <Link href="/login" className="text-sm font-medium hover:text-primary transition-colors text-muted-foreground">Login</Link>

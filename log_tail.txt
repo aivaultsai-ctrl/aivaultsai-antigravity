@@ -1,0 +1,500 @@
+﻿   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2025-12-27T12:47:16.454Z] Checked if tokens are valid: true, expires at: 1766842409778
+[debug] [2025-12-27T12:47:16.454Z] Checked if tokens are valid: true, expires at: 1766842409778
+[debug] [2025-12-27T12:47:16.454Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/clipvaultapi/sites/clipvaultapi [none]
+[debug] [2025-12-27T12:47:16.645Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/clipvaultapi/sites/clipvaultapi 200
+[debug] [2025-12-27T12:47:16.646Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/clipvaultapi/sites/clipvaultapi {"name":"projects/clipvaultapi/sites/clipvaultapi","defaultUrl":"https://clipvaultapi.web.app","appId":"1:149139735297:web:3fdd6155f0cb4ffc929100","type":"DEFAULT_SITE"}
+[info]   â–² Next.js 14.2.21
+
+[info]   - Environments: .env.local
+
+
+[info]    Creating an optimized production build ...
+
+[info]  âš  Compiled with warnings
+
+
+[info] ./src/app/api/agents/growth/analyze/route.ts
+Attempted import error: 'generateObject' is not exported from 'ai' (imported as 'generateObject').
+
+Import trace for requested module:
+./src/app/api/agents/growth/analyze/route.ts
+
+./src/app/api/agents/ops/automate-task/route.ts
+Attempted import error: 'generateObject' is not exported from 'ai' (imported as 'generateObject').
+
+Import trace for requested module:
+./src/app/api/agents/ops/automate-task/route.ts
+
+./src/app/api/agents/support/handle-ticket/route.ts
+Attempted import error: 'generateObject' is not exported from 'ai' (imported as 'generateObject').
+
+Import trace for requested module:
+./src/app/api/agents/support/handle-ticket/route.ts
+
+
+[info]  âš  Compiled with warnings
+
+
+[info] ./src/app/api/workers/content/route.ts
+Attempted import error: 'generateText' is not exported from 'ai' (imported as 'generateText').
+
+Import trace for requested module:
+./src/app/api/workers/content/route.ts
+./node_modules/next/dist/build/webpack/loaders/next-app-loader.js?name=app%2Fapi%2Fworkers%2Fcontent%2Froute&page=%2Fapi%2Fworkers%2Fcontent%2Froute&pagePath=private-next-app-dir%2Fapi%2Fworkers%2Fcontent%2Froute.ts&appDir=C%3A%5Cdev%5Caivaultsai-antigravity%5Csrc%5Capp&appPaths=%2Fapi%2Fworkers%2Fcontent%2Froute&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D!./src/app/api/workers/content/route.ts?__next_edge_ssr_entry__
+
+
+[info]  âœ“ Compiled successfully
+
+[info]    Skipping validation of types
+   Skipping linting
+
+[info]    Collecting page data ...
+
+[info]  âš  Using edge runtime on a page currently disables static generation for that page
+
+[info]    Generating static pages (0/38) ...
+
+[info]    Generating static pages (9/38) 
+
+[info]    Generating static pages (18/38) 
+
+[info]    Generating static pages (28/38) 
+
+[info] [SEED] Added agent: sdr-agent-001
+[SEED] Added agent: content-agent-001
+[SEED] Added agent: cs-agent-001
+[SEED] Added agent: ops-agent-001
+[SEED] Added agent: growth-agent-001
+
+[info]  âœ“ Generating static pages (38/38)
+
+[info]    Finalizing page optimization ...
+
+[info]    Collecting build traces ...
+
+[info] 
+
+[info] Route (app)                              Size     First Load JS
+â”Œ â—‹ /                                    7.47 kB         108 kB
+â”œ â—‹ /_not-found                          873 B            88 kB
+â”œ â—‹ /about                               976 B           102 kB
+â”œ â—‹ /agents                              6.92 kB        94.1 kB
+â”œ â—‹ /ai-workers                          5.41 kB         106 kB
+â”œ â—‹ /api/admin/seed                      0 B                0 B
+â”œ Æ’ /api/advice                          0 B                0 B
+â”œ Æ’ /api/agents/content/transform        0 B                0 B
+â”œ Æ’ /api/agents/growth                   0 B                0 B
+â”œ Æ’ /api/agents/growth/analyze           0 B                0 B
+â”œ Æ’ /api/agents/ops                      0 B                0 B
+â”œ Æ’ /api/agents/ops/automate-task        0 B                0 B
+â”œ Æ’ /api/agents/sdr/qualify-lead         0 B                0 B
+â”œ Æ’ /api/agents/support                  0 B                0 B
+â”œ Æ’ /api/agents/support/handle-ticket    0 B                0 B
+â”œ Æ’ /api/ai/chat                         0 B                0 B
+â”œ Æ’ /api/orchestration/run-workflow      0 B                0 B
+â”œ Æ’ /api/workers/content                 0 B                0 B
+â”œ â—‹ /business                            976 B           102 kB
+â”œ â—‹ /chat                                51.6 kB         146 kB
+â”œ â—‹ /chatbots                            184 B          94.2 kB
+â”œ â—‹ /chatbots/dashboard                  138 B          87.3 kB
+â”œ â—‹ /chatbots/demo                       2.75 kB        89.9 kB
+â”œ â—‹ /chatbots/pricing                    184 B          94.2 kB
+â”œ â—‹ /contact                             2.06 kB          96 kB
+â”œ â—‹ /dashboard                           3.3 kB         97.3 kB
+â”œ â—‹ /dashboard/operations                5.44 kB         213 kB
+â”œ â—‹ /dashboard/orchestration             2.61 kB        89.8 kB
+â”œ â—‹ /employees                           5 kB            212 kB
+â”œ â—‹ /leads                               2.45 kB         210 kB
+â”œ â—‹ /login                               2.52 kB         210 kB
+â”œ â—‹ /operations                          5.06 kB          99 kB
+â”œ â—‹ /partners                            976 B           102 kB
+â”œ â—‹ /pricing                             976 B           102 kB
+â”œ â—‹ /register                            2.55 kB         210 kB
+â”” â—‹ /settings                            1.7 kB         88.9 kB
++ First Load JS shared by all            87.2 kB
+  â”œ chunks/117-5a9f48cb3e490dde.js       31.6 kB
+  â”œ chunks/fd9d1056-47703411750c4cec.js  53.6 kB
+  â”” other shared chunks (total)          1.95 kB
+
+
+Æ’ Middleware                             25.8 kB
+
+
+[info] â—‹  (Static)   prerendered as static content
+Æ’  (Dynamic)  server-rendered on demand
+
+
+[info] Building a Cloud Function to run this application. This is needed due to:
+[info]  â€¢ middleware
+[info]  â€¢ non-static component /api/advice/route
+[info]  â€¢ non-static component /api/agents/growth/route
+[info]  â€¢ non-static component /api/agents/content/transform/route
+[info]  â€¢ non-static component /api/agents/ops/automate-task/route
+[debug] [2025-12-27T12:47:33.188Z]  â€¢ non-static component /api/agents/support/route
+[debug] [2025-12-27T12:47:33.188Z]  â€¢ non-static component /api/agents/growth/analyze/route
+[debug] [2025-12-27T12:47:33.188Z]  â€¢ non-static component /api/agents/ops/route
+[debug] [2025-12-27T12:47:33.188Z]  â€¢ non-static component /api/agents/sdr/qualify-lead/route
+[debug] [2025-12-27T12:47:33.188Z]  â€¢ non-static component /api/orchestration/run-workflow/route
+[debug] [2025-12-27T12:47:33.188Z]  â€¢ non-static component /api/agents/support/handle-ticket/route
+[debug] [2025-12-27T12:47:33.188Z]  â€¢ non-static component /api/ai/chat/route
+[debug] [2025-12-27T12:47:33.188Z]  â€¢ non-static component /api/workers/content/route
+[info] 
+[debug] [2025-12-27T12:47:33.747Z] skipping /dashboard/operations due to it matching an unsupported rewrite/redirect/header or middlware
+[debug] [2025-12-27T12:47:33.748Z] skipping /dashboard due to it matching an unsupported rewrite/redirect/header or middlware
+[debug] [2025-12-27T12:47:33.748Z] skipping /dashboard/orchestration due to it matching an unsupported rewrite/redirect/header or middlware
+[debug] [2025-12-27T12:47:35.611Z] Checked if tokens are valid: true, expires at: 1766842409778
+[debug] [2025-12-27T12:47:35.611Z] Checked if tokens are valid: true, expires at: 1766842409778
+[debug] [2025-12-27T12:47:35.611Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/clipvaultapi/sites/clipvaultapi [none]
+[debug] [2025-12-27T12:47:36.363Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/clipvaultapi/sites/clipvaultapi 200
+[debug] [2025-12-27T12:47:36.364Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/clipvaultapi/sites/clipvaultapi {"name":"projects/clipvaultapi/sites/clipvaultapi","defaultUrl":"https://clipvaultapi.web.app","appId":"1:149139735297:web:3fdd6155f0cb4ffc929100","type":"DEFAULT_SITE"}
+[debug] [2025-12-27T12:47:38.072Z] [web frameworks] effective firebase.json:  {
+  "hosting": [
+    {
+      "source": ".",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "site": "aivaultsai-web",
+      "frameworksBackend": {
+        "region": "europe-west1"
+      },
+      "rewrites": [
+        {
+          "source": "**",
+          "function": {
+            "functionId": "ssraivaultsaiweb",
+            "region": "europe-west1",
+            "pinTag": true
+          }
+        }
+      ],
+      "redirects": [],
+      "headers": [
+        {
+          "source": "/_not-found",
+          "headers": [
+            {
+              "key": "x-next-cache-tags",
+              "value": "_N_T_/layout,_N_T_/_not-found/layout,_N_T_/_not-found/page,_N_T_/_not-found"
+            }
+          ]
+        },
+        {
+          "source": "/contact",
+          "headers": [
+            {
+              "key": "x-next-cache-tags",
+              "value": "_N_T_/layout,_N_T_/contact/layout,_N_T_/contact/page,_N_T_/contact"
+            }
+          ]
+        },
+        {
+          "source": "/favicon.ico",
+          "headers": [
+            {
+              "key": "cache-control",
+              "value": "public, max-age=0, must-revalidate"
+            },
+            {
+              "key": "content-type",
+              "value": "image/x-icon"
+            },
+            {
+              "key": "x-next-cache-tags",
+              "value": "_N_T_/layout,_N_T_/favicon.ico/layout,_N_T_/favicon.ico/route,_N_T_/favicon.ico"
+            }
+          ]
+        },
+        {
+          "source": "/ai-workers",
+          "headers": [
+            {
+              "key": "x-next-cache-tags",
+              "value": "_N_T_/layout,_N_T_/ai-workers/layout,_N_T_/ai-workers/page,_N_T_/ai-workers"
+            }
+          ]
+        },
+        {
+          "source": "/api/admin/seed",
+          "headers": [
+            {
+              "key": "content-type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-next-cache-tags",
+              "value": "_N_T_/layout,_N_T_/api/layout,_N_T_/api/admin/layout,_N_T_/api/admin/seed/layout,_N_T_/api/admin/seed/route,_N_T_/api/admin/seed"
+            }
+          ]
+        },
+        {
+          "source": "/chatbots/pricing",
+          "headers": [
+            {
+              "key": "x-next-cache-tags",
+              "value": "_N_T_/layout,_N_T_/chatbots/layout,_N_T_/chatbots/pricing/layout,_N_T_/chatbots/pricing/page,_N_T_/chatbots/pricing"
+            }
+          ]
+        },
+        {
+          "source": "/chatbots/dashboard",
+          "headers": [
+            {
+              "key": "x-next-cache-tags",
+              "value": "_N_T_/layout,_N_T_/chatbots/layout,_N_T_/chatbots/dashboard/layout,_N_T_/chatbots/dashboard/page,_N_T_/chatbots/dashboard"
+            }
+          ]
+        },
+        {
+          "source": "/dashboard/orchestration",
+          "headers": [
+            {
+              "key": "x-next-cache-tags",
+              "value": "_N_T_/layout,_N_T_/dashboard/layout,_N_T_/dashboard/orchestration/layout,_N_T_/dashboard/orchestration/page,_N_T_/dashboard/orchestration"
+            }
+          ]
+        },
+        {
+          "source": "/chatbots",
+          "headers": [
+            {
+              "key": "x-next-cache-tags",
+              "value": "_N_T_/layout,_N_T_/chatbots/layout,_N_T_/chatbots/page,_N_T_/chatbots"
+            }
+          ]
+        },
+        {
+          "source": "/dashboard",
+          "headers": [
+            {
+              "key": "x-next-cache-tags",
+              "value": "_N_T_/layout,_N_T_/(dashboard)/layout,_N_T_/(dashboard)/dashboard/layout,_N_T_/(dashboard)/dashboard/page,_N_T_/dashboard"
+            }
+          ]
+        },
+        {
+          "source": "/chatbots/demo",
+          "headers": [
+            {
+              "key": "x-next-cache-tags",
+              "value": "_N_T_/layout,_N_T_/chatbots/layout,_N_T_/chatbots/demo/layout,_N_T_/chatbots/demo/page,_N_T_/chatbots/demo"
+            }
+          ]
+        }
+      ],
+      "cleanUrls": true,
+      "trailingSlash": false,
+      "public": ".firebase\\aivaultsai-web\\hosting",
+      "webFramework": "next_ssr"
+    }
+  ],
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "disallowLegacyRuntimeConfig": true,
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.local"
+      ]
+    },
+    {
+      "source": ".firebase\\aivaultsai-web\\functions",
+      "codebase": "firebase-frameworks-aivaultsai-web"
+    }
+  ]
+}
+[info] 
+[info] === Deploying to 'clipvaultapi'...
+[info] 
+[info] i  deploying functions, hosting 
+[debug] [2025-12-27T12:47:38.074Z] Checked if tokens are valid: true, expires at: 1766842409778
+[debug] [2025-12-27T12:47:38.074Z] Checked if tokens are valid: true, expires at: 1766842409778
+[debug] [2025-12-27T12:47:38.074Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/clipvaultapi [none]
+[debug] [2025-12-27T12:47:38.817Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/clipvaultapi 200
+[debug] [2025-12-27T12:47:38.817Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/clipvaultapi {"projectNumber":"149139735297","projectId":"clipvaultapi","lifecycleState":"ACTIVE","name":"clipvaultapi","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2025-07-13T20:49:49.480883Z"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: preparing codebase firebase-frameworks-aivaultsai-web for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2025-12-27T12:47:38.819Z] Checked if tokens are valid: true, expires at: 1766842409778
+[debug] [2025-12-27T12:47:38.819Z] Checked if tokens are valid: true, expires at: 1766842409778
+[debug] [2025-12-27T12:47:38.819Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/clipvaultapi/adminSdkConfig [none]
+[debug] [2025-12-27T12:47:39.137Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/clipvaultapi/adminSdkConfig 200
+[debug] [2025-12-27T12:47:39.137Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/clipvaultapi/adminSdkConfig {"projectId":"clipvaultapi","storageBucket":"clipvaultapi.firebasestorage.app"}
+[debug] [2025-12-27T12:47:39.137Z] Checked if tokens are valid: true, expires at: 1766842409778
+[debug] [2025-12-27T12:47:39.137Z] Checked if tokens are valid: true, expires at: 1766842409778
+[debug] [2025-12-27T12:47:39.138Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/clipvaultapi/configs [none]
+[debug] [2025-12-27T12:47:39.395Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/clipvaultapi/configs 200
+[debug] [2025-12-27T12:47:39.395Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/clipvaultapi/configs {}
+[debug] [2025-12-27T12:47:39.396Z] Validating nodejs source
+[debug] [2025-12-27T12:47:40.046Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^13.6.0",
+    "firebase-functions": "^7.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^3.4.1"
+  },
+  "private": true
+}
+[debug] [2025-12-27T12:47:40.047Z] Building nodejs source
+[info] i  functions: Loading and analyzing source code for codebase default to determine what to deploy 
+[debug] [2025-12-27T12:47:40.055Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-12-27T12:47:40.064Z] Found firebase-functions binary at 'C:\dev\aivaultsai-antigravity\functions\node_modules\.bin\firebase-functions'
+[info] Serving at port 8423
+
+[debug] [2025-12-27T12:47:40.792Z] Got response from /__/functions.yaml {"endpoints":{},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[debug] [2025-12-27T12:47:44.826Z] Validating nodejs source
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] !  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2025-12-27T12:47:45.375Z] > [functions] package.json contents: {
+  "name": "aivaultsai-one",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": "22"
+  },
+  "dependencies": {
+    "@ai-sdk/google": "^3.0.1",
+    "@ai-sdk/react": "^3.0.3",
+    "@ai-sdk/ui-utils": "^1.2.11",
+    "@google/generative-ai": "^0.24.1",
+    "@radix-ui/react-separator": "^1.1.8",
+    "@radix-ui/react-slot": "^1.2.4",
+    "@stripe/stripe-js": "^4.4.0",
+    "ai": "^3.0.32",
+    "autoprefixer": "^10.4.20",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "firebase": "^10.13.1",
+    "firebase-admin": "^12.5.0",
+    "framer-motion": "^11.5.6",
+    "lucide-react": "^0.446.0",
+    "next": "14.2.21",
+    "postcss": "^8.4.31",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "resend": "^6.6.0",
+    "stripe": "^16.10.0",
+    "tailwind-merge": "^2.5.2",
+    "tailwindcss": "^3.4.13",
+    "tailwindcss-animate": "^1.0.7",
+    "youtube-transcript": "^1.2.1",
+    "zod": "^3.23.8",
+    "zod-to-json-schema": "^3.23.2",
+    "firebase-frameworks": "^0.11.0",
+    "firebase-functions": "^6.0.1"
+  },
+  "main": "server.js"
+}
+[debug] [2025-12-27T12:47:45.375Z] Building nodejs source
+[info] i  functions: Loading and analyzing source code for codebase firebase-frameworks-aivaultsai-web to determine what to deploy 
+[debug] [2025-12-27T12:47:45.375Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-12-27T12:47:45.380Z] Found firebase-functions binary at 'C:\dev\aivaultsai-antigravity\.firebase\aivaultsai-web\functions\node_modules\.bin\firebase-functions'
+[info] Serving at port 8115
+
+[debug] [2025-12-27T12:47:45.906Z] Got response from /__/functions.yaml {"endpoints":{"ssraivaultsaiweb":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","region":["europe-west1"],"labels":{},"httpsTrigger":{},"entryPoint":"ssraivaultsaiweb"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[info] i  extensions: ensuring required API firebaseextensions.googleapis.com is enabled... 
+[debug] [2025-12-27T12:47:49.946Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-27T12:47:49.946Z] > authorizing via signed-in user (aivaultsai@gmail.com)
+[debug] [2025-12-27T12:47:49.946Z] [iam] checking project clipvaultapi for permissions ["firebase.projects.get","firebaseextensions.instances.list"]
+[debug] [2025-12-27T12:47:49.946Z] Checked if tokens are valid: true, expires at: 1766842409778
+[debug] [2025-12-27T12:47:49.946Z] Checked if tokens are valid: true, expires at: 1766842409778
+[debug] [2025-12-27T12:47:49.947Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/clipvaultapi:testIamPermissions [none]
+[debug] [2025-12-27T12:47:49.947Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/clipvaultapi:testIamPermissions x-goog-quota-user=projects/clipvaultapi
+[debug] [2025-12-27T12:47:49.947Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/clipvaultapi:testIamPermissions {"permissions":["firebase.projects.get","firebaseextensions.instances.list"]}
+[debug] [2025-12-27T12:47:50.612Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/clipvaultapi:testIamPermissions 200
+[debug] [2025-12-27T12:47:50.612Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/clipvaultapi:testIamPermissions {"permissions":["firebase.projects.get","firebaseextensions.instances.list"]}
+[debug] [2025-12-27T12:47:50.612Z] Checked if tokens are valid: true, expires at: 1766842409778
+[debug] [2025-12-27T12:47:50.612Z] Checked if tokens are valid: true, expires at: 1766842409778
+[debug] [2025-12-27T12:47:50.621Z] >>> [apiv2][query] GET https://firebaseextensions.googleapis.com/v1beta/projects/clipvaultapi/instances pageSize=100&pageToken=
+[debug] [2025-12-27T12:47:51.385Z] <<< [apiv2][status] GET https://firebaseextensions.googleapis.com/v1beta/projects/clipvaultapi/instances 200
+[debug] [2025-12-27T12:47:51.385Z] <<< [apiv2][body] GET https://firebaseextensions.googleapis.com/v1beta/projects/clipvaultapi/instances {}
+[info] i  functions: Loaded environment variables from .env. 
+[info] i  functions: preparing .firebase\aivaultsai-web\functions directory for uploading... 
+[info] i  functions: packaged C:\dev\aivaultsai-antigravity\.firebase\aivaultsai-web\functions (162.74 MB) for uploading 
+[debug] [2025-12-27T12:47:57.674Z] Checked if tokens are valid: true, expires at: 1766842409778
+[debug] [2025-12-27T12:47:57.674Z] Checked if tokens are valid: true, expires at: 1766842409778
+[debug] [2025-12-27T12:47:57.674Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/clipvaultapi/locations/-/functions [none]
+[debug] [2025-12-27T12:47:58.335Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/clipvaultapi/locations/-/functions 200
+[debug] [2025-12-27T12:47:58.336Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/clipvaultapi/locations/-/functions {"functions":[{"name":"projects/clipvaultapi/locations/us-central1/functions/updateUser","httpsTrigger":{"url":"https://us-central1-clipvaultapi.cloudfunctions.net/updateUser","securityLevel":"SECURE_ALWAYS"},"status":"ACTIVE","entryPoint":"updateUser","timeout":"60s","availableMemoryMb":256,"serviceAccountEmail":"clipvaultapi@appspot.gserviceaccount.com","updateTime":"2025-12-10T15:03:56.853Z","versionId":"3","labels":{"deployment-tool":"cli-firebase","deployment-callable":"true","firebase-functions-hash":"5e65e0ba2d9aae81a53313c5db089b8c5446062c"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-120823440662.us-central1.cloudfunctions.appspot.com/f47c1c01-4b00-4cf1-ac37-06458065a8c8.zip","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"clipvaultapi\",\"storageBucket\":\"clipvaultapi.firebasestorage.app\"}","GCLOUD_PROJECT":"clipvaultapi","EVENTARC_CLOUD_EVENT_SOURCE":"projects/clipvaultapi/locations/us-central1/functions/updateUser"},"runtime":"nodejs20","ingressSettings":"ALLOW_ALL","buildId":"97a618e5-79bd-4e55-b7cb-99286fb79327","buildEnvironmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""},"buildName":"projects/149139735297/locations/us-central1/builds/97a618e5-79bd-4e55-b7cb-99286fb79327","dockerRegistry":"ARTIFACT_REGISTRY","automaticUpdatePolicy":{},"buildServiceAccount":"projects/clipvaultapi/serviceAccounts/149139735297-compute@developer.gserviceaccount.com","satisfiesPzi":true},{"name":"projects/clipvaultapi/locations/us-central1/functions/createUser","httpsTrigger":{"url":"https://us-central1-clipvaultapi.cloudfunctions.net/createUser","securityLevel":"SECURE_ALWAYS"},"status":"ACTIVE","entryPoint":"createUser","timeout":"60s","availableMemoryMb":256,"serviceAccountEmail":"clipvaultapi@appspot.gserviceaccount.com","updateTime":"2025-12-10T15:03:48.427Z","versionId":"3","labels":{"deployment-callable":"true","firebase-functions-hash":"5e65e0ba2d9aae81a53313c5db089b8c5446062c","deployment-tool":"cli-firebase"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-120823440662.us-central1.cloudfunctions.appspot.com/f47c1c01-4b00-4cf1-ac37-06458065a8c8.zip","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"clipvaultapi\",\"storageBucket\":\"clipvaultapi.firebasestorage.app\"}","GCLOUD_PROJECT":"clipvaultapi","EVENTARC_CLOUD_EVENT_SOURCE":"projects/clipvaultapi/locations/us-central1/functions/createUser"},"runtime":"nodejs20","ingressSettings":"ALLOW_ALL","buildId":"97a618e5-79bd-4e55-b7cb-99286fb79327","buildEnvironmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""},"buildName":"projects/149139735297/locations/us-central1/builds/97a618e5-79bd-4e55-b7cb-99286fb79327","dockerRegistry":"ARTIFACT_REGISTRY","automaticUpdatePolicy":{},"buildServiceAccount":"projects/clipvaultapi/serviceAccounts/149139735297-compute@developer.gserviceaccount.com","satisfiesPzi":true}]}
+[debug] [2025-12-27T12:47:58.337Z] Checked if tokens are valid: true, expires at: 1766842409778
+[debug] [2025-12-27T12:47:58.337Z] Checked if tokens are valid: true, expires at: 1766842409778
+[debug] [2025-12-27T12:47:58.337Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/clipvaultapi/locations/-/functions filter=environment%3D%22GEN_2%22
+[debug] [2025-12-27T12:47:59.322Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/clipvaultapi/locations/-/functions 200
+[debug] [2025-12-27T12:47:59.322Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/clipvaultapi/locations/-/functions {"functions":[{"name":"projects/clipvaultapi/locations/europe-west1/functions/ssrclipvaultapi","buildConfig":{"build":"projects/149139735297/locations/europe-west1/builds/b1ac5ee2-270b-4806-81bc-44482aa85cfe","runtime":"nodejs22","entryPoint":"ssrclipvaultapi","source":{"storageSource":{"bucket":"gcf-v2-sources-149139735297-europe-west1","object":"ssrclipvaultapi/function-source.zip","generation":"1766596667167423"}},"environmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""},"dockerRepository":"projects/clipvaultapi/locations/europe-west1/repositories/gcf-artifacts","sourceProvenance":{"resolvedStorageSource":{"bucket":"gcf-v2-sources-149139735297-europe-west1","object":"ssrclipvaultapi/function-source.zip","generation":"1766596667167423"}},"dockerRegistry":"ARTIFACT_REGISTRY","serviceAccount":"projects/clipvaultapi/serviceAccounts/149139735297-compute@developer.gserviceaccount.com","automaticUpdatePolicy":{}},"serviceConfig":{"service":"projects/clipvaultapi/locations/europe-west1/services/ssrclipvaultapi","timeoutSeconds":60,"environmentVariables":{"VERCEL_URL":"clipvaultapi.web.app","__FIREBASE_FRAMEWORKS_ENTRY__":"next.js","__FIREBASE_DEFAULTS__":"{\"config\":{\"projectId\":\"clipvaultapi\",\"appId\":\"1:149139735297:web:3fdd6155f0cb4ffc929100\",\"storageBucket\":\"clipvaultapi.firebasestorage.app\",\"apiKey\":\"AIzaSyB5Cr2cpHRX-vswgoRII_jugdTCco_TJAo\",\"authDomain\":\"clipvaultapi.firebaseapp.com\",\"messagingSenderId\":\"149139735297\",\"measurementId\":\"G-XK8GZ0YV7W\",\"projectNumber\":\"149139735297\",\"version\":\"2\"},\"_authTokenSyncURL\":\"/__session\"}","FIREBASE_CONFIG":"{\"projectId\":\"clipvaultapi\",\"storageBucket\":\"clipvaultapi.firebasestorage.app\"}","GCLOUD_PROJECT":"clipvaultapi","EVENTARC_CLOUD_EVENT_SOURCE":"projects/clipvaultapi/locations/europe-west1/services/ssrclipvaultapi","FUNCTION_TARGET":"ssrclipvaultapi","LOG_EXECUTION_ID":"true"},"maxInstanceCount":3,"ingressSettings":"ALLOW_ALL","uri":"https://ssrclipvaultapi-4fsw4sluaq-ew.a.run.app","serviceAccountEmail":"149139735297-compute@developer.gserviceaccount.com","availableMemory":"256Mi","allTrafficOnLatestRevision":true,"revision":"ssrclipvaultapi-00003-tex","maxInstanceRequestConcurrency":80,"availableCpu":"1"},"state":"ACTIVE","updateTime":"2025-12-24T17:22:21.089391304Z","labels":{"firebase-functions-codebase":"firebase-frameworks-clipvaultapi","firebase-functions-hash":"8929cd3847b30e631f24f53d6ecdbc5e86f30a7a","deployment-tool":"cli-firebase"},"environment":"GEN_2","url":"https://europe-west1-clipvaultapi.cloudfunctions.net/ssrclipvaultapi","createTime":"2025-12-24T16:36:53.663989063Z","satisfiesPzi":true},{"name":"projects/clipvaultapi/locations/us-central1/functions/triggerAI","buildConfig":{"build":"projects/149139735297/locations/us-central1/builds/d4ccf5e8-db12-4d0f-8912-754b0fb2a425","runtime":"nodejs20","entryPoint":"triggerAI","source":{"storageSource":{"bucket":"gcf-v2-sources-149139735297-us-central1","object":"triggerAI/function-source.zip","generation":"1764275069514133"}},"environmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""},"dockerRepository":"projects/clipvaultapi/locations/us-central1/repositories/gcf-artifacts","sourceProvenance":{"resolvedStorageSource":{"bucket":"gcf-v2-sources-149139735297-us-central1","object":"triggerAI/function-source.zip","generation":"1764275069514133"}},"dockerRegistry":"ARTIFACT_REGISTRY","serviceAccount":"projects/clipvaultapi/serviceAccounts/149139735297-compute@developer.gserviceaccount.com","automaticUpdatePolicy":{}},"serviceConfig":{"service":"projects/clipvaultapi/locations/us-central1/services/triggerai","timeoutSeconds":60,"environmentVariables":{"GEMINI_API_KEY":"AIzaSyCnJ-C3Fy5jxz-s9WWjtjvlJAiTfchPV7w","NEXT_PUBLIC_FIREBASE_PROJECT_ID":"clipvaultapi","FIREBASE_CONFIG":"{\"projectId\":\"clipvaultapi\",\"storageBucket\":\"clipvaultapi.firebasestorage.app\"}","GCLOUD_PROJECT":"clipvaultapi","EVENTARC_CLOUD_EVENT_SOURCE":"projects/clipvaultapi/locations/us-central1/services/triggerAI","FUNCTION_TARGET":"triggerAI","LOG_EXECUTION_ID":"true","FUNCTION_SIGNATURE_TYPE":"http"},"maxInstanceCount":3,"ingressSettings":"ALLOW_ALL","uri":"https://triggerai-4fsw4sluaq-uc.a.run.app","serviceAccountEmail":"149139735297-compute@developer.gserviceaccount.com","availableMemory":"256Mi","allTrafficOnLatestRevision":true,"revision":"triggerai-00003-kif","maxInstanceRequestConcurrency":80,"availableCpu":"1"},"state":"ACTIVE","updateTime":"2025-11-29T18:02:52.595529234Z","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"2d26a2e8d1a7af66bf2d276175464d028ad759d5"},"environment":"GEN_2","url":"https://us-central1-clipvaultapi.cloudfunctions.net/triggerAI","createTime":"2025-11-26T05:33:07.087156804Z","satisfiesPzi":true},{"name":"projects/clipvaultapi/locations/us-central1/functions/executeAIWorker","buildConfig":{"build":"projects/149139735297/locations/us-central1/builds/d4ccf5e8-db12-4d0f-8912-754b0fb2a425","runtime":"nodejs20","entryPoint":"executeAIWorker","source":{"storageSource":{"bucket":"gcf-v2-sources-149139735297-us-central1","object":"executeAIWorker/function-source.zip","generation":"1764275016534490"}},"environmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""},"dockerRepository":"projects/clipvaultapi/locations/us-central1/repositories/gcf-artifacts","sourceProvenance":{"resolvedStorageSource":{"bucket":"gcf-v2-sources-149139735297-us-central1","object":"executeAIWorker/function-source.zip","generation":"1764275016534490"}},"dockerRegistry":"ARTIFACT_REGISTRY","serviceAccount":"projects/clipvaultapi/serviceAccounts/149139735297-compute@developer.gserviceaccount.com","automaticUpdatePolicy":{}},"serviceConfig":{"service":"projects/clipvaultapi/locations/us-central1/services/executeaiworker","timeoutSeconds":60,"environmentVariables":{"GEMINI_API_KEY":"AIzaSyCnJ-C3Fy5jxz-s9WWjtjvlJAiTfchPV7w","NEXT_PUBLIC_FIREBASE_PROJECT_ID":"clipvaultapi","FIREBASE_CONFIG":"{\"projectId\":\"clipvaultapi\",\"storageBucket\":\"clipvaultapi.firebasestorage.app\"}","GCLOUD_PROJECT":"clipvaultapi","EVENTARC_CLOUD_EVENT_SOURCE":"projects/clipvaultapi/locations/us-central1/services/executeAIWorker","FUNCTION_TARGET":"executeAIWorker","LOG_EXECUTION_ID":"true"},"maxInstanceCount":3,"ingressSettings":"ALLOW_ALL","uri":"https://executeaiworker-4fsw4sluaq-uc.a.run.app","serviceAccountEmail":"149139735297-compute@developer.gserviceaccount.com","availableMemory":"256Mi","allTrafficOnLatestRevision":true,"revision":"executeaiworker-00002-pux","maxInstanceRequestConcurrency":80,"availableCpu":"1"},"state":"ACTIVE","updateTime":"2025-11-29T18:02:52.642384110Z","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"2d26a2e8d1a7af66bf2d276175464d028ad759d5"},"environment":"GEN_2","url":"https://us-central1-clipvaultapi.cloudfunctions.net/executeAIWorker","createTime":"2025-11-26T05:31:52.403266520Z","satisfiesPzi":true}]}
+[info] i  functions: ensuring required API run.googleapis.com is enabled... 
+[info] i  functions: ensuring required API eventarc.googleapis.com is enabled... 
+[info] i  functions: ensuring required API pubsub.googleapis.com is enabled... 
+[info] i  functions: ensuring required API storage.googleapis.com is enabled... 
+[info] i  functions: generating the service identity for pubsub.googleapis.com... 
+[debug] [2025-12-27T12:47:59.326Z] Checked if tokens are valid: true, expires at: 1766842409778
+[debug] [2025-12-27T12:47:59.326Z] Checked if tokens are valid: true, expires at: 1766842409778
+[info] i  functions: generating the service identity for eventarc.googleapis.com... 
+[debug] [2025-12-27T12:47:59.326Z] Checked if tokens are valid: true, expires at: 1766842409778
+[debug] [2025-12-27T12:47:59.326Z] Checked if tokens are valid: true, expires at: 1766842409778
+[debug] [2025-12-27T12:47:59.326Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1beta1/projects/149139735297/services/pubsub.googleapis.com:generateServiceIdentity [none]
+[debug] [2025-12-27T12:47:59.326Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1beta1/projects/149139735297/services/pubsub.googleapis.com:generateServiceIdentity x-goog-quota-user=projects/149139735297
+[debug] [2025-12-27T12:47:59.326Z] >>> [apiv2][body] POST https://serviceusage.googleapis.com/v1beta1/projects/149139735297/services/pubsub.googleapis.com:generateServiceIdentity {}
+[debug] [2025-12-27T12:47:59.327Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1beta1/projects/149139735297/services/eventarc.googleapis.com:generateServiceIdentity [none]
+[debug] [2025-12-27T12:47:59.327Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1beta1/projects/149139735297/services/eventarc.googleapis.com:generateServiceIdentity x-goog-quota-user=projects/149139735297
+[debug] [2025-12-27T12:47:59.327Z] >>> [apiv2][body] POST https://serviceusage.googleapis.com/v1beta1/projects/149139735297/services/eventarc.googleapis.com:generateServiceIdentity {}
+[debug] [2025-12-27T12:48:00.236Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1beta1/projects/149139735297/services/eventarc.googleapis.com:generateServiceIdentity 200
+[debug] [2025-12-27T12:48:00.236Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1beta1/projects/149139735297/services/eventarc.googleapis.com:generateServiceIdentity {"name":"operations/finished.DONE_OPERATION","done":true,"response":{"@type":"type.googleapis.com/google.api.serviceusage.v1beta1.ServiceIdentity","email":"service-149139735297@gcp-sa-eventarc.iam.gserviceaccount.com","uniqueId":"118062666626034553804"}}
+[debug] [2025-12-27T12:48:00.253Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1beta1/projects/149139735297/services/pubsub.googleapis.com:generateServiceIdentity 200
+[debug] [2025-12-27T12:48:00.253Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1beta1/projects/149139735297/services/pubsub.googleapis.com:generateServiceIdentity {"name":"operations/finished.DONE_OPERATION","done":true,"response":{"@type":"type.googleapis.com/google.api.serviceusage.v1beta1.ServiceIdentity","email":"service-149139735297@gcp-sa-pubsub.iam.gserviceaccount.com","uniqueId":"112973214098721866596"}}
+[debug] [2025-12-27T12:48:00.256Z] Checked if tokens are valid: true, expires at: 1766842409778
+[debug] [2025-12-27T12:48:00.256Z] Checked if tokens are valid: true, expires at: 1766842409778
+[debug] [2025-12-27T12:48:00.256Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/clipvaultapi [none]
+[debug] [2025-12-27T12:48:00.960Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/clipvaultapi 200
+[debug] [2025-12-27T12:48:00.960Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/clipvaultapi {"projectNumber":"149139735297","projectId":"clipvaultapi","lifecycleState":"ACTIVE","name":"clipvaultapi","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2025-07-13T20:49:49.480883Z"}
+[debug] [2025-12-27T12:48:00.961Z] Checked if tokens are valid: true, expires at: 1766842409778
+[debug] [2025-12-27T12:48:00.961Z] Checked if tokens are valid: true, expires at: 1766842409778
+[debug] [2025-12-27T12:48:00.961Z] >>> [apiv2][query] GET https://compute.googleapis.com/compute/v1/projects/149139735297 [none]
+[debug] [2025-12-27T12:48:01.351Z] <<< [apiv2][status] GET https://compute.googleapis.com/compute/v1/projects/149139735297 200
+[debug] [2025-12-27T12:48:01.352Z] <<< [apiv2][body] GET https://compute.googleapis.com/compute/v1/projects/149139735297 {"kind":"compute#project","id":"7771358070920784201","creationTimestamp":"2025-12-06T12:52:54.292-08:00","name":"clipvaultapi","commonInstanceMetadata":{"kind":"compute#metadata","fingerprint":"Ve7haAh-VSM="},"quotas":[{"metric":"SNAPSHOTS","limit":1000,"usage":0},{"metric":"NETWORKS","limit":5,"usage":1},{"metric":"FIREWALLS","limit":100,"usage":4},{"metric":"IMAGES","limit":100,"usage":0},{"metric":"STATIC_ADDRESSES","limit":8,"usage":0},{"metric":"ROUTES","limit":200,"usage":0},{"metric":"FORWARDING_RULES","limit":15,"usage":0},{"metric":"TARGET_POOLS","limit":50,"usage":0},{"metric":"HEALTH_CHECKS","limit":75,"usage":0},{"metric":"IN_USE_ADDRESSES","limit":4,"usage":0},{"metric":"TARGET_INSTANCES","limit":50,"usage":0},{"metric":"TARGET_HTTP_PROXIES","limit":10,"usage":0},{"metric":"URL_MAPS","limit":10,"usage":0},{"metric":"BACKEND_SERVICES","limit":50,"usage":0},{"metric":"INSTANCE_TEMPLATES","limit":100,"usage":0},{"metric":"TARGET_VPN_GATEWAYS","limit":5,"usage":0},{"metric":"VPN_TUNNELS","limit":10,"usage":0},{"metric":"BACKEND_BUCKETS","limit":3,"usage":0},{"metric":"ROUTERS","limit":10,"usage":0},{"metric":"TARGET_SSL_PROXIES","limit":10,"usage":0},{"metric":"TARGET_HTTPS_PROXIES","limit":10,"usage":0},{"metric":"SSL_CERTIFICATES","limit":10,"usage":0},{"metric":"SUBNETWORKS","limit":100,"usage":0},{"metric":"TARGET_TCP_PROXIES","limit":10,"usage":0},{"metric":"CPUS_ALL_REGIONS","limit":12,"usage":0},{"metric":"SECURITY_POLICIES","limit":0,"usage":0},{"metric":"SECURITY_POLICY_RULES","limit":0,"usage":0},{"metric":"XPN_SERVICE_PROJECTS","limit":1000,"usage":0},{"metric":"PACKET_MIRRORINGS","limit":20,"usage":0},{"metric":"NETWORK_ENDPOINT_GROUPS","limit":100,"usage":0},{"metric":"INTERCONNECTS","limit":6,"usage":0},{"metric":"SSL_POLICIES","limit":10,"usage":0},{"metric":"GLOBAL_INTERNAL_ADDRESSES","limit":5000,"usage":0},{"metric":"VPN_GATEWAYS","limit":5,"usage":0},{"metric":"MACHINE_IMAGES","limit":100,"usage":0},{"metric":"SECURITY_POLICY_CEVAL_RULES","limit":0,"usage":0},{"metric":"GPUS_ALL_REGIONS","limit":0,"usage":0},{"metric":"EXTERNAL_VPN_GATEWAYS","limit":5,"usage":0},{"metric":"PUBLIC_ADVERTISED_PREFIXES","limit":1,"usage":0},{"metric":"PUBLIC_DELEGATED_PREFIXES","limit":10,"usage":0},{"metric":"STATIC_BYOIP_ADDRESSES","limit":128,"usage":0},{"metric":"NETWORK_FIREWALL_POLICIES","limit":10,"usage":0},{"metric":"INTERNAL_TRAFFIC_DIRECTOR_FORWARDING_RULES","limit":15,"usage":0},{"metric":"GLOBAL_EXTERNAL_MANAGED_FORWARDING_RULES","limit":15,"usage":0},{"metric":"GLOBAL_INTERNAL_MANAGED_BACKEND_SERVICES","limit":50,"usage":0},{"metric":"GLOBAL_EXTERNAL_MANAGED_BACKEND_SERVICES","limit":50,"usage":0},{"metric":"GLOBAL_EXTERNAL_PROXY_LB_BACKEND_SERVICES","limit":50,"usage":0},{"metric":"GLOBAL_INTERNAL_TRAFFIC_DIRECTOR_BACKEND_SERVICES","limit":100,"usage":0}],"selfLink":"https://www.googleapis.com/compute/v1/projects/clipvaultapi","defaultServiceAccount":"149139735297-compute@developer.gserviceaccount.com","xpnProjectStatus":"UNSPECIFIED_XPN_PROJECT_STATUS","defaultNetworkTier":"PREMIUM","vmDnsSetting":"ZONAL_ONLY","cloudArmorTier":"CA_STANDARD"}
+[debug] [2025-12-27T12:48:01.370Z] Checked if tokens are valid: true, expires at: 1766842409778
+[debug] [2025-12-27T12:48:01.371Z] Checked if tokens are valid: true, expires at: 1766842409778
+[debug] [2025-12-27T12:48:01.371Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/aivaultsai-web/versions [none]
+[debug] [2025-12-27T12:48:01.371Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/aivaultsai-web/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase","firebase-web-framework":"next_ssr"}}
+[debug] [2025-12-27T12:48:02.146Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/aivaultsai-web/versions 404
+[debug] [2025-12-27T12:48:02.147Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/aivaultsai-web/versions {"error":{"code":404,"message":"Requested entity was not found.","status":"NOT_FOUND"}}
+[error] 
+[error] Error: Request to https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/aivaultsai-web/versions had HTTP Error: 404, Requested entity was not found.
+[debug] [2025-12-27T12:48:02.209Z] Error Context: {
+  "body": {
+    "error": {
+      "code": 404,
+      "message": "Requested entity was not found.",
+      "status": "NOT_FOUND"
+    }
+  },
+  "response": {
+    "statusCode": 404
+  }
+}

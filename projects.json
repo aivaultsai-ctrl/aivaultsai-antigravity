@@ -1,0 +1,39 @@
+{
+  "status": "success",
+  "result": [
+    {
+      "projectId": "aivaultsai-bd716",
+      "projectNumber": "931548628374",
+      "displayName": "aivaultsai",
+      "name": "projects/aivaultsai-bd716",
+      "resources": {
+        "hostingSite": "aivaultsai-bd716"
+      },
+      "state": "ACTIVE",
+      "etag": "1_3f139428-7bbe-4bbd-b622-5c77c7c26106"
+    },
+    {
+      "projectId": "clipvaultapi",
+      "projectNumber": "149139735297",
+      "displayName": "clipvaultapi",
+      "name": "projects/clipvaultapi",
+      "resources": {
+        "hostingSite": "clipvaultapi"
+      },
+      "state": "ACTIVE",
+      "etag": "1_2d3df6a1-5ecf-43a3-8859-7b4c6800aab3"
+    },
+    {
+      "projectId": "gen-lang-client-0919803756",
+      "projectNumber": "250839324987",
+      "displayName": "Gemini API",
+      "name": "projects/gen-lang-client-0919803756",
+      "resources": {
+        "hostingSite": "gen-lang-client-0919803756",
+        "locationId": "europe-west"
+      },
+      "state": "ACTIVE",
+      "etag": "1_ab2c74f9-fd0a-4c6d-924a-e5190dc8b64e"
+    }
+  ]
+}

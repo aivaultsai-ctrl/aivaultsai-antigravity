@@ -151,7 +151,7 @@ export default function ChatWindow({ employeeId = "sales", initialMessage }: Cha
                     handleSubmit(e);
                 }} className="relative flex items-center group">
                     <input
-                        value={input}
+                        value={input || ''}
                         onChange={handleInputChange}
                         placeholder={customError ? "Resolve error to continue..." : `Message ${employeeId}...`}
                         disabled={isLoading || isRetrying}
@@ -160,7 +160,7 @@ export default function ChatWindow({ employeeId = "sales", initialMessage }: Cha
                     />
                     <button
                         type="submit"
-                        disabled={isLoading || isRetrying || !input.trim()}
+                        disabled={isLoading || isRetrying || !input?.trim()}
                         className="absolute right-2 top-1/2 -translate-y-1/2 h-8 w-8 bg-primary hover:bg-primary-hover rounded-lg flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed transition-all text-white shadow-md active:scale-95"
                     >
                         {isLoading || isRetrying ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}

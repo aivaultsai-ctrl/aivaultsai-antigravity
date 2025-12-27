@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "result": [
+    {
+      "name": "projects/clipvaultapi/webApps/1:149139735297:web:3fdd6155f0cb4ffc929100",
+      "displayName": "aivaultsai-web",
+      "platform": "WEB",
+      "appId": "1:149139735297:web:3fdd6155f0cb4ffc929100",
+      "namespace": "MWZiNTg2NmUtYTAwMC00ZTI4LWFlZjUtMTVkNTcxZjRhMDM0",
+      "apiKeyId": "8d15c759-d57a-4db2-9c2c-5e36b861ed1d",
+      "state": "ACTIVE",
+      "expireTime": "1970-01-01T00:00:00Z"
+    }
+  ]
+}

@@ -57,10 +57,12 @@ export function useRequireAuth(redirectUrl = "/login") {
     const router = useRouter();
     const pathname = usePathname();
 
+
     useEffect(() => {
-        if (!loading && !user) {
-            router.push(`${redirectUrl}?redirect=${encodeURIComponent(pathname)}`);
-        }
+        // Temporarily disabled client-side auth redirect for debugging chat
+        // if (!loading && !user) {
+        //     router.push(`${redirectUrl}?redirect=${encodeURIComponent(pathname)}`);
+        // }
     }, [user, loading, router, redirectUrl, pathname]);
 
     return { user, loading };

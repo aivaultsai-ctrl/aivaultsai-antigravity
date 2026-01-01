@@ -1,6 +1,6 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { NextResponse } from "next/server";
-import { saveAdviceLead } from "@/lib/firebase-admin";
+import { NextRequest, NextResponse } from 'next/server';
+import { saveAdviceLead } from "../../../lib/firebase-admin";
 
 export async function POST(req: Request) {
     try {

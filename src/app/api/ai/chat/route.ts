@@ -1,7 +1,7 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
-import { GoogleGenerativeAIStream, StreamingTextResponse } from 'ai';
-import { adminDb } from "@/lib/firebase/admin";
-import { DEFAULT_EMPLOYEES } from "@/lib/ai/employee-prompts";
+import { google } from '@ai-sdk/google';
+import { streamText } from 'ai';
+import { adminDb } from "../../../../lib/firebase/admin";
+import { DEFAULT_EMPLOYEES } from "../../../../lib/ai/employee-prompts";
 
 export const runtime = 'nodejs';
 export const maxDuration = 60; // Increased to 60s for better resilience
@@ -12,8 +12,6 @@ if (!apiKey) {
     console.error("CRITICAL: GOOGLE_GEMINI_API_KEY is missing");
     throw new Error("Missing GOOGLE_GEMINI_API_KEY");
 }
-
-const genAI = new GoogleGenerativeAI(apiKey);
 
 export async function POST(req: Request) {
     try {
@@ -44,36 +42,18 @@ export async function POST(req: Request) {
             }
         }
 
-
-        // const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
-        // Fallback to gemini-pro if 1.5-flash is unavailable in the region/version
-        // const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
-        const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
-
-        // Convert messages to Gemini format
-        // Gemini expects history + last message structure or full chat history
-        // SDK `startChat` takes history (previous messages)
-        const history = messages.slice(0, -1).map((msg: any) => ({
-            role: msg.role === 'user' ? 'user' : 'model',
-            parts: [{ text: msg.content }],
+        const coreMessages = messages.map((m: any) => ({
+            role: m.role,
+            content: m.content
         }));
 
-        // Use system prompt? Gemini 1.5 supports systemInstruction
-        const chat = model.startChat({
-            history: history,
-            systemInstruction: { role: 'user', parts: [{ text: systemPrompt }] }
+        const result = await streamText({
+            model: google('gemini-1.5-flash'),
+            messages: coreMessages,
+            system: systemPrompt,
         });
 
-
-        const lastMessage = messages[messages.length - 1].content;
-        const result = await chat.sendMessageStream(lastMessage);
-
-        // GoogleGenerativeAIStream expects the response object structure to have a stream property, 
-        // OR the stream itself depending on version. 
-        // result.stream is the AsyncGenerator.
-        const stream = GoogleGenerativeAIStream(result);
-
-        return new StreamingTextResponse(stream);
+        return result.toTextStreamResponse();
 
     } catch (error: any) {
         console.error("AI Route Critical Failure:", error);

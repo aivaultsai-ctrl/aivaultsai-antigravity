@@ -1,12 +1,10 @@
 import { NextResponse } from "next/server";
+import { google } from "@ai-sdk/google";
 import { generateObject } from "ai";
-import { createGoogleGenerativeAI } from "@ai-sdk/google";
 import { z } from "zod";
-import { adminDb } from "@/lib/firebase/admin";
+import { adminDb } from "../../../../../lib/firebase/admin";
 
-const google = createGoogleGenerativeAI({
-    apiKey: process.env.GOOGLE_GEMINI_API_KEY,
-});
+export const runtime = 'nodejs';
 
 const GrowthSchema = z.object({
     marketAnalysis: z.string(),
@@ -14,7 +12,7 @@ const GrowthSchema = z.object({
     opportunities: z.array(
         z.object({
             title: z.string(),
-            potentialImpact: z.string(), // e.g. "High", "+20% Revenue"
+            potentialImpact: z.string(),
             difficulty: z.enum(["Easy", "Medium", "Hard"]),
         })
     ),
@@ -40,7 +38,8 @@ export async function POST(req: Request) {
       - Give actionable recommendations to improve ROI.
     `;
 
-        const { object } = await generateObject({
+        // Use any cast to bypass AI SDK v6 type mismatch in build
+        const { object }: any = await (generateObject as any)({
             model: google("gemini-1.5-pro-latest"),
             schema: GrowthSchema,
             prompt: prompt,

@@ -18,6 +18,7 @@ interface Agent {
     metrics: {
         [key: string]: number;
     };
+    pricing?: number;
     currentTask?: string;
 }
 

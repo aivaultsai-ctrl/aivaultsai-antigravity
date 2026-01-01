@@ -1,0 +1,20 @@
+Testing connection with Accelerated URL...
+URL: postgresql://postgres:postgres...
+Database connection failed: PrismaClientKnownRequestError: 
+Invalid `prisma.tenant.count()` invocation in
+C:\dev\aivaultsai-antigravity\scripts\db-check.ts:13:43
+
+  10 try {
+  11     console.log('Testing connection with Accelerated URL...');
+  12     console.log('URL:', process.env.DATABASE_URL?.substring(0, 30) + '...');
+→ 13     const count = await prisma.tenant.count(
+Error validating `accelerateUrl`: the URL must start with the protocol `prisma://` or `prisma+postgres://`
+    at qr.handleRequestError (C:\dev\aivaultsai-antigravity\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at qr.handleAndLogRequestError (C:\dev\aivaultsai-antigravity\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at qr.request (C:\dev\aivaultsai-antigravity\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at async a (C:\dev\aivaultsai-antigravity\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:805:24)
+    at async main (C:\dev\aivaultsai-antigravity\scripts\db-check.ts:13:23) {
+  code: 'P6001',
+  meta: { modelName: 'Tenant' },
+  clientVersion: '7.2.0'
+}

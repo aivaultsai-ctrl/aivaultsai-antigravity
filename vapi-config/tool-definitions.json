@@ -1,0 +1,75 @@
+[
+    {
+        "async": true,
+        "name": "extract_call_details",
+        "description": "Gebruik deze functie aan het einde van ELK gesprek of zodra de informatie bekend is om de database te vullen.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "customerName": {
+                    "type": "string",
+                    "description": "De naam van de beller."
+                },
+                "phoneNumber": {
+                    "type": "string",
+                    "description": "Telefoonnummer van de beller (indien verstrekt)."
+                },
+                "email": {
+                    "type": "string",
+                    "description": "Email van de beller (indien verstrekt)."
+                },
+                "intent": {
+                    "type": "string",
+                    "enum": [
+                        "LEAD",
+                        "FAQ",
+                        "FINANCIAL",
+                        "SPAM"
+                    ],
+                    "description": "De hoofdbedoeling van het gesprek. LEAD = nieuwe klant, FAQ = informatievraag, FINANCIAL = factuur/betaling, SPAM = ongewenste call."
+                },
+                "mode": {
+                    "type": "string",
+                    "enum": [
+                        "SALES",
+                        "DEFENSIVE"
+                    ],
+                    "description": "Zet op DEFENSIVE als het over facturen, schulden, incasso of betalingen gaat, anders SALES."
+                },
+                "priority": {
+                    "type": "string",
+                    "enum": [
+                        "LOW",
+                        "MEDIUM",
+                        "HIGH",
+                        "CRITICAL"
+                    ],
+                    "description": "Bepaal de urgentie. LOW = routinevraag, MEDIUM = normale lead, HIGH = belangrijk/financieel, CRITICAL = dreigingen of escalatie."
+                },
+                "invoiceNumber": {
+                    "type": "string",
+                    "description": "Het factuurnummer als de intent FINANCIAL is. Vraag hier ALTIJD specifiek naar bij financiële gesprekken."
+                },
+                "companyName": {
+                    "type": "string",
+                    "description": "Naam van het bedrijf dat belt (vooral belangrijk bij incasso/schuldeisers)."
+                },
+                "summary": {
+                    "type": "string",
+                    "description": "Een heldere samenvatting van maximaal 20 woorden over wat de beller wil."
+                },
+                "appointmentRequest": {
+                    "type": "boolean",
+                    "description": "True als de beller een afspraak wil maken, anders false.",
+                    "default": false
+                }
+            },
+            "required": [
+                "intent",
+                "mode",
+                "priority",
+                "summary"
+            ]
+        }
+    }
+]

@@ -1,0 +1,270 @@
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\aivaultsa
+    i-antigravity\src\app\api
+
+
+Mode            LastWriteTime
+----            -------------
+d-----   29-12-2025     10:43
+d-----   29-12-2025     10:43
+d-----   29-12-2025     10:43
+d-----   29-12-2025     10:43
+d-----   29-12-2025     13:57
+d-----   29-12-2025     10:43
+d-----   29-12-2025     10:43
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\aivaultsa
+    i-antigravity\src\app\api
+    \admin
+
+
+Mode            LastWriteTime
+----            -------------
+d-----   29-12-2025     10:43
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\aivaultsa
+    i-antigravity\src\app\api
+    \admin\seed
+
+
+Mode            LastWriteTime
+----            -------------
+-a----   29-12-2025     10:43
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\aivaultsa
+    i-antigravity\src\app\api
+    \advice
+
+
+Mode            LastWriteTime
+----            -------------
+-a----   29-12-2025     10:43
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\aivaultsa
+    i-antigravity\src\app\api
+    \agents
+
+
+Mode            LastWriteTime
+----            -------------
+d-----   29-12-2025     10:43
+d-----   29-12-2025     10:43
+d-----   29-12-2025     10:43
+d-----   29-12-2025     10:43
+d-----   29-12-2025     19:08
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\aivaultsa
+    i-antigravity\src\app\api
+    \agents\content
+
+
+Mode            LastWriteTime
+----            -------------
+d-----   29-12-2025     10:43
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\aivaultsa
+    i-antigravity\src\app\api
+    \agents\content\transform
+
+
+Mode            LastWriteTime
+----            -------------
+-a----   29-12-2025     10:43
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\aivaultsa
+    i-antigravity\src\app\api
+    \agents\growth
+
+
+Mode            LastWriteTime
+----            -------------
+d-----   29-12-2025     10:43
+-a----   29-12-2025     10:43
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\aivaultsa
+    i-antigravity\src\app\api
+    \agents\growth\analyze
+
+
+Mode            LastWriteTime
+----            -------------
+-a----   29-12-2025     13:50
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\aivaultsa
+    i-antigravity\src\app\api
+    \agents\ops
+
+
+Mode            LastWriteTime
+----            -------------
+d-----   29-12-2025     10:43
+-a----   29-12-2025     10:43
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\aivaultsa
+    i-antigravity\src\app\api
+    \agents\ops\automate-task
+
+
+Mode            LastWriteTime
+----            -------------
+-a----   29-12-2025     13:50
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\aivaultsa
+    i-antigravity\src\app\api
+    \agents\sdr
+
+
+Mode            LastWriteTime
+----            -------------
+d-----   29-12-2025     10:43
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\aivaultsa
+    i-antigravity\src\app\api
+    \agents\sdr\qualify-lead
+
+
+Mode            LastWriteTime
+----            -------------
+-a----   29-12-2025     10:43
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\aivaultsa
+    i-antigravity\src\app\api
+    \agents\support
+
+
+Mode            LastWriteTime
+----            -------------
+d-----   29-12-2025     19:08
+d-----   29-12-2025     10:43
+-a----   29-12-2025     10:43
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\aivaultsa
+    i-antigravity\src\app\api
+    \agents\support\analyze
+
+
+Mode            LastWriteTime
+----            -------------
+-a----   31-12-2025     00:33
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\aivaultsa
+    i-antigravity\src\app\api
+    \agents\support\handle-ti
+    cket
+
+
+Mode            LastWriteTime
+----            -------------
+-a----   29-12-2025     13:50
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\aivaultsa
+    i-antigravity\src\app\api
+    \ai
+
+
+Mode            LastWriteTime
+----            -------------
+d-----   29-12-2025     10:43
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\aivaultsa
+    i-antigravity\src\app\api
+    \ai\chat
+
+
+Mode            LastWriteTime
+----            -------------
+-a----   29-12-2025     13:50
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\aivaultsa
+    i-antigravity\src\app\api
+    \demo-request
+
+
+Mode            LastWriteTime
+----            -------------
+-a----   29-12-2025     13:59
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\aivaultsa
+    i-antigravity\src\app\api
+    \orchestration
+
+
+Mode            LastWriteTime
+----            -------------
+d-----   29-12-2025     10:43
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\aivaultsa
+    i-antigravity\src\app\api
+    \orchestration\run-workfl
+    ow
+
+
+Mode            LastWriteTime
+----            -------------
+-a----   29-12-2025     10:43
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\aivaultsa
+    i-antigravity\src\app\api
+    \workers
+
+
+Mode            LastWriteTime
+----            -------------
+d-----   29-12-2025     10:43
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\aivaultsa
+    i-antigravity\src\app\api
+    \workers\content
+
+
+Mode            LastWriteTime
+----            -------------
+-a----   29-12-2025     13:50
+
+

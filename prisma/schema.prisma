@@ -1,0 +1,91 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+
+enum CallIntent {
+  LEAD
+  FAQ
+  FINANCIAL
+  SPAM
+}
+
+enum CallMode {
+  SALES
+  DEFENSIVE
+}
+
+enum CallPriority {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+model Tenant {
+  id        String     @id @default(cuid())
+  name      String
+  aiProfile AIProfile?
+  leads     Lead[]
+}
+
+model AIProfile {
+  id           String @id @default(cuid())
+  tenantId     String @unique
+  tenant       Tenant @relation(fields: [tenantId], references: [id])
+  systemPrompt String @default("Je bent een behulpzame assistent.")
+  faqKnowledge Json?
+}
+
+model Lead {
+  id               String       @id @default(uuid())
+  tenantId         String
+
+  // Contact Info
+  customerName     String?
+  phoneNumber      String?
+  email            String?
+
+  // AI Classification (Shield State)
+  intent           CallIntent   @default(LEAD)
+  mode             CallMode     @default(SALES)
+  priority         CallPriority @default(LOW)
+
+  // Content & Protection
+  summary          String?      @db.Text
+  transcript       String?      @db.Text
+  invoiceNumber    String?      // Shield Mode: Factuurnummer
+  companyName      String?      // Shield Mode: Bedrijfsnaam (incasso, schuldeiser)
+  appointment      Boolean      @default(false)
+
+  // Compliance & Quality Control
+  requiresReview   Boolean      @default(false)
+
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
+
+  // Relations
+  tenant           Tenant       @relation(fields: [tenantId], references: [id])
+
+  @@index([tenantId, intent, mode])
+  @@index([createdAt])
+}
+
+model FAQEmbedding {
+  id        String   @id @default(uuid())
+  tenantId  String
+  question  String
+  answer    String
+  embedding Unsupported("vector(1536)")
+
+  createdAt DateTime @default(now())
+
+  @@index([tenantId])
+}
+
+
+

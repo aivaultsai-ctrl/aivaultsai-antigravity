@@ -1,6 +1,7 @@
 "use client";
 
 import { useChat } from "@ai-sdk/react";
+import { DefaultChatTransport } from "ai";
 import { MessageBubble } from "./MessageBubble";
 import { Send, Sparkles, Loader2, StopCircle, RefreshCw, AlertTriangle } from "lucide-react";
 import { useState, useRef, useEffect, useCallback } from "react";
@@ -18,44 +19,35 @@ export default function ChatWindow({ employeeId = "sales", initialMessage }: Cha
     const scrollRef = useRef<HTMLDivElement>(null);
     const [retryCount, setRetryCount] = useState(0);
     const [isRetrying, setIsRetrying] = useState(false);
-
-    // Custom error state to handle transient vs permanent errors
     const [customError, setCustomError] = useState<string | null>(null);
 
-    const { messages, input, handleInputChange, handleSubmit, isLoading, stop, error, reload } = useChat({
-        api: "/api/ai/chat",
-        body: { employeeId },
-        initialMessages: initialMessage ? [{ id: "init", role: "assistant", content: initialMessage }] : [],
-        maxSteps: 5, // Enable multi-step tools
-        onError: (err) => {
+    // AI SDK 6.0 compatible configuration using DefaultChatTransport
+    const { messages, isLoading, stop, reload, append, input, handleInputChange }: any = useChat({
+        transport: new DefaultChatTransport({
+            api: "/api/ai/chat",
+            body: { employeeId }
+        }),
+        onError: (err: any) => {
             console.error("Chat Error:", err);
             setCustomError(err.message || "Connection failed");
 
-            // Auto-retry logic for specific errors or generic failures
             if (retryCount < MAX_RETRIES && !isLoading) {
                 const timeout = Math.pow(2, retryCount) * RETRY_DELAY_BASE;
-                console.log(`Auto-retrying in ${timeout}ms... (Attempt ${retryCount + 1}/${MAX_RETRIES})`);
-
                 setIsRetrying(true);
                 setTimeout(() => {
                     setRetryCount(prev => prev + 1);
-                    reload().catch(e => {
-                        console.error("Retry failed:", e);
-                        setIsRetrying(false);
-                    });
+                    reload();
                     setIsRetrying(false);
                 }, timeout);
             }
         },
         onFinish: () => {
-            // Reset retry count on success
             setRetryCount(0);
             setCustomError(null);
             setIsRetrying(false);
         }
     });
 
-    // Smart Auto-scroll: Only scroll if already near bottom or new message is from user
     const scrollToBottom = useCallback(() => {
         if (scrollRef.current) {
             const { scrollHeight, clientHeight } = scrollRef.current;
@@ -76,6 +68,13 @@ export default function ChatWindow({ employeeId = "sales", initialMessage }: Cha
         reload();
     };
 
+    const localHandleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!input?.trim() || isLoading || isRetrying) return;
+
+        append({ role: 'user', content: input });
+    };
+
     return (
         <div className="flex flex-col h-full w-full max-w-4xl mx-auto glass-panel rounded-2xl overflow-hidden shadow-2xl border border-white/10 relative">
             {/* Header */}
@@ -91,7 +90,7 @@ export default function ChatWindow({ employeeId = "sales", initialMessage }: Cha
                     </span>
                 </div>
                 {(isLoading || isRetrying) && (
-                    <button onClick={() => stop()} className="text-xs text-red-400 hover:text-red-300 flex items-center gap-1 transition-colors font-medium">
+                    <button onClick={() => stop()} className="text-xs text-red-100 hover:text-red-300 flex items-center gap-1 transition-colors font-medium">
                         <StopCircle className="w-3 h-3" /> STOP
                     </button>
                 )}
@@ -99,15 +98,19 @@ export default function ChatWindow({ employeeId = "sales", initialMessage }: Cha
 
             {/* Messages Area */}
             <div ref={scrollRef} className="flex-1 overflow-y-auto p-6 space-y-6 scroll-smooth bg-black/10">
-                {messages.length === 0 && !customError && (
+                {messages?.length === 0 && !customError && initialMessage && (
+                    <MessageBubble role="assistant" content={initialMessage} />
+                )}
+
+                {messages?.length === 0 && !customError && !initialMessage && (
                     <div className="flex flex-col items-center justify-center h-full text-muted-foreground opacity-50 select-none animation-fade-in">
                         <Sparkles className="w-12 h-12 mb-4 text-primary opacity-50" />
                         <p>System Online. Initialize conversation...</p>
                     </div>
                 )}
 
-                {messages.map((m) => (
-                    <MessageBubble key={m.id} role={m.role as "user" | "assistant"} content={m.content} />
+                {messages?.map((m: any) => (
+                    <MessageBubble key={m.id} role={m.role} content={m.content} />
                 ))}
 
                 {/* Loading Indicator inside chat flow */}
@@ -123,7 +126,7 @@ export default function ChatWindow({ employeeId = "sales", initialMessage }: Cha
                 {/* Error State */}
                 {customError && !isLoading && !isRetrying && (
                     <div className="flex flex-col items-center gap-2 p-4 animate-in fade-in slide-in-from-bottom-4">
-                        <div className="p-4 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-sm text-center max-w-md">
+                        <div className="p-4 rounded-lg bg-red-500/10 border border-red-500/20 text-red-500 text-sm text-center max-w-md">
                             <div className="flex items-center justify-center gap-2 mb-1 font-semibold">
                                 <AlertTriangle className="w-4 h-4" />
                                 <span>Transmission Failed</span>
@@ -142,14 +145,7 @@ export default function ChatWindow({ employeeId = "sales", initialMessage }: Cha
 
             {/* Input Area */}
             <div className="p-4 border-t border-white/10 bg-slate-950/80 backdrop-blur-xl z-20">
-                <form onSubmit={(e) => {
-                    // Prevent submit if already loading to avoid state conflicts
-                    if (isLoading || isRetrying) {
-                        e.preventDefault();
-                        return;
-                    }
-                    handleSubmit(e);
-                }} className="relative flex items-center group">
+                <form onSubmit={localHandleSubmit} className="relative flex items-center group">
                     <input
                         value={input || ''}
                         onChange={handleInputChange}

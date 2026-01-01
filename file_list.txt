@@ -1,0 +1,229 @@
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\src\app\a
+    pi
+
+
+Mode            LastWriteTime
+----            -------------
+dar---   12-12-2025     20:31
+d-----   23-12-2025     01:23
+d-----   21-12-2025     22:06
+dar---   12-12-2025     20:31
+d-----   21-12-2025     22:12
+d-----   19-12-2025     08:36
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\src\app\a
+    pi\admin
+
+
+Mode            LastWriteTime
+----            -------------
+dar---   12-12-2025     20:31
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\src\app\a
+    pi\admin\seed
+
+
+Mode            LastWriteTime
+----            -------------
+-a----   21-12-2025     22:01
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\src\app\a
+    pi\advice
+
+
+Mode            LastWriteTime
+----            -------------
+-a----   23-12-2025     08:01
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\src\app\a
+    pi\agents
+
+
+Mode            LastWriteTime
+----            -------------
+d-----   21-12-2025     22:03
+d-----   22-12-2025     06:17
+d-----   22-12-2025     06:17
+d-----   21-12-2025     22:03
+d-----   22-12-2025     06:16
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\src\app\a
+    pi\agents\content
+
+
+Mode            LastWriteTime
+----            -------------
+d-----   21-12-2025     22:03
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\src\app\a
+    pi\agents\content\transfo
+    rm
+
+
+Mode            LastWriteTime
+----            -------------
+-a----   22-12-2025     06:19
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\src\app\a
+    pi\agents\growth
+
+
+Mode            LastWriteTime
+----            -------------
+d-----   21-12-2025     22:06
+-a----   22-12-2025     06:17
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\src\app\a
+    pi\agents\growth\analyze
+
+
+Mode            LastWriteTime
+----            -------------
+-a----   21-12-2025     22:06
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\src\app\a
+    pi\agents\ops
+
+
+Mode            LastWriteTime
+----            -------------
+d-----   21-12-2025     22:06
+-a----   22-12-2025     06:17
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\src\app\a
+    pi\agents\ops\automate-ta
+    sk
+
+
+Mode            LastWriteTime
+----            -------------
+-a----   21-12-2025     22:06
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\src\app\a
+    pi\agents\sdr
+
+
+Mode            LastWriteTime
+----            -------------
+d-----   21-12-2025     22:03
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\src\app\a
+    pi\agents\sdr\qualify-lea
+    d
+
+
+Mode            LastWriteTime
+----            -------------
+-a----   22-12-2025     06:19
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\src\app\a
+    pi\agents\support
+
+
+Mode            LastWriteTime
+----            -------------
+d-----   21-12-2025     22:06
+-a----   22-12-2025     06:16
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\src\app\a
+    pi\agents\support\handle-
+    ticket
+
+
+Mode            LastWriteTime
+----            -------------
+-a----   21-12-2025     22:06
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\src\app\a
+    pi\ai
+
+
+Mode            LastWriteTime
+----            -------------
+dar---   12-12-2025     20:31
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\src\app\a
+    pi\ai\chat
+
+
+Mode            LastWriteTime
+----            -------------
+-a----   24-12-2025     02:14
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\src\app\a
+    pi\orchestration
+
+
+Mode            LastWriteTime
+----            -------------
+d-----   21-12-2025     22:12
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\src\app\a
+    pi\orchestration\run-work
+    flow
+
+
+Mode            LastWriteTime
+----            -------------
+-a----   22-12-2025     06:36
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\src\app\a
+    pi\workers
+
+
+Mode            LastWriteTime
+----            -------------
+d-----   22-12-2025     07:04
+
+
+    Directory: C:\dev\aivault
+    sai-antigravity\src\app\a
+    pi\workers\content
+
+
+Mode            LastWriteTime
+----            -------------
+-a----   19-12-2025     08:35
+
+

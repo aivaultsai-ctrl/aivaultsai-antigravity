@@ -1,0 +1,22 @@
+﻿Testing connection with explicit datasource URL...
+node.exe : Database connectio
+n failed!
+At line:1 char:1
++ & "C:\Program Files\nodejs/
+node.exe" "C:\Users\Startklaa
+r\AppData\Roa ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~
+    + CategoryInfo           
+   : NotSpecified: (Databas  
+  e connection failed!:Str   
+ ing) [], RemoteException
+    + FullyQualifiedErrorId  
+   : NativeCommandError
+ 
+Message: Unknown property dat
+asources provided to PrismaCl
+ient constructor.
+Read more at https://pris.ly/
+d/client-constructor

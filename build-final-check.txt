@@ -1,0 +1,233 @@
+﻿
+> aivaultsai-one@1.0.0 build
+> next build
+
+  Ôû▓ Next.js 14.2.21
+  - Environments: .env.local, .env
+
+   Creating an optimized production build ...
+ Ô£ô Compiled successfully
+   Linting and checking validity of types ...
+node.exe : 
+At line:1 char:1
++ & "C:\Program Files\nodejs
+/node.exe" "C:\Users\Startkl
+aar\AppData\Roa ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
+    + CategoryInfo          
+    : NotSpecified: (:Stri  
+  ng) [], RemoteException
+    + FullyQualifiedErrorId 
+    : NativeCommandError
+ 
+Failed to compile.
+
+./src/app/(dashboard)/agents
+/page.tsx
+3:31  Warning: 'useRef' is d
+efined but never used.  @typ
+escript-eslint/no-unused-var
+s
+463:48  Warning: 'query' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+
+./src/app/(dashboard)/dashbo
+ard/page.tsx
+5:34  Warning: 'TrendingUp' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+
+./src/app/(public)/business/
+page.tsx
+2:22  Warning: 'Check' is de
+fined but never used.  @type
+script-eslint/no-unused-vars
+
+./src/app/(public)/page.tsx
+9:5  Warning: 'CheckCircle2'
+ is defined but never used. 
+ @typescript-eslint/no-unuse
+d-vars
+
+./src/app/(public)/pricing/p
+age.tsx
+2:17  Warning: 'ArrowRight' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+
+./src/app/ai-workers/page.ts
+x
+6:5  Warning: 'Bot' is defin
+ed but never used.  @typescr
+ipt-eslint/no-unused-vars
+15:5  Warning: 'X' is define
+d but never used.  @typescri
+pt-eslint/no-unused-vars
+
+./src/app/api/agents/content
+/transform/route.ts
+3:28  Warning: 'req' is defi
+ned but never used.  @typesc
+ript-eslint/no-unused-vars
+
+./src/app/api/agents/growth/
+route.ts
+6:17  Warning: 'metrics' is 
+assigned a value but never u
+sed.  @typescript-eslint/no-
+unused-vars
+6:26  Warning: 'campaignType
+' is assigned a value but ne
+ver used.  @typescript-eslin
+t/no-unused-vars
+23:14  Warning: 'error' is d
+efined but never used.  @typ
+escript-eslint/no-unused-var
+s
+
+./src/app/api/agents/ops/rou
+te.ts
+6:23  Warning: 'data' is ass
+igned a value but never used
+.  @typescript-eslint/no-unu
+sed-vars
+25:14  Warning: 'error' is d
+efined but never used.  @typ
+escript-eslint/no-unused-var
+s
+
+./src/app/api/agents/sdr/qua
+lify-lead/route.ts
+3:28  Warning: 'req' is defi
+ned but never used.  @typesc
+ript-eslint/no-unused-vars
+
+./src/app/api/agents/support
+/route.ts
+22:14  Warning: 'error' is d
+efined but never used.  @typ
+escript-eslint/no-unused-var
+s
+
+./src/app/api/ai/chat/route.
+ts
+39:26  Warning: 'e' is defin
+ed but never used.  @typescr
+ipt-eslint/no-unused-vars
+
+./src/app/api/orchestration/
+run-workflow/route.ts
+39:19  Warning: 'opsRes' is 
+assigned a value but never u
+sed.  @typescript-eslint/no-
+unused-vars
+
+./src/app/api/workers/conten
+t/route.ts
+47:18  Warning: 'e' is defin
+ed but never used.  @typescr
+ipt-eslint/no-unused-vars
+
+./src/app/chatbots/dashboard
+/page.tsx
+2:8  Warning: 'Link' is defi
+ned but never used.  @typesc
+ript-eslint/no-unused-vars
+
+./src/app/chatbots/page.tsx
+2:41  Warning: 'Shield' is d
+efined but never used.  @typ
+escript-eslint/no-unused-var
+s
+2:65  Warning: 'Database' is
+ defined but never used.  @t
+ypescript-eslint/no-unused-v
+ars
+
+./src/app/dashboard/orchestr
+ation/page.tsx
+56:23  Warning: 'setPipeline
+s' is assigned a value but n
+ever used.  @typescript-esli
+nt/no-unused-vars
+
+./src/components/features/bi
+lling/UpgradeModal.tsx
+4:10  Warning: 'Dialog' is d
+efined but never used.  @typ
+escript-eslint/no-unused-var
+s
+4:18  Warning: 'DialogConten
+t' is defined but never used
+.  @typescript-eslint/no-unu
+sed-vars
+4:33  Warning: 'DialogHeader
+' is defined but never used.
+  @typescript-eslint/no-unus
+ed-vars
+4:47  Warning: 'DialogTitle'
+ is defined but never used. 
+ @typescript-eslint/no-unuse
+d-vars
+4:60  Warning: 'DialogDescri
+ption' is defined but never 
+used.  @typescript-eslint/no
+-unused-vars
+6:10  Warning: 'loadStripe' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+
+./src/components/features/ch
+at/ChatWindow.tsx
+26:9  Error: Use "@ts-expect
+-error" instead of "@ts-igno
+re", as "@ts-ignore" will do
+ nothing if the following li
+ne is error-free.  @typescri
+pt-eslint/ban-ts-comment
+
+./src/components/features/ch
+at/MessageBubble.tsx
+2:21  Warning: 'Sparkles' is
+ defined but never used.  @t
+ypescript-eslint/no-unused-v
+ars
+
+./src/lib/ai/index.ts
+34:22  Warning: 'error' is d
+efined but never used.  @typ
+escript-eslint/no-unused-var
+s
+44:27  Warning: 'query' is d
+efined but never used.  @typ
+escript-eslint/no-unused-var
+s
+59:27  Warning: 'reason' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+
+./src/lib/firebase/admin.ts
+2:19  Warning: 'getApp' is d
+efined but never used.  @typ
+escript-eslint/no-unused-var
+s
+
+./src/lib/firebase-admin.ts
+13:10  Warning: 'error' is d
+efined but never used.  @typ
+escript-eslint/no-unused-var
+s
+
+info  - Need to disable some
+ ESLint rules? Learn more he
+re: https://nextjs.org/docs/
+basic-features/eslint#disabl
+ing-rules

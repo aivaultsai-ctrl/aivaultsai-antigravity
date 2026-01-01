@@ -1,0 +1,50 @@
+﻿declare class DefaultChatTransport<UI_MESSAGE extends UIMessage> extends HttpChatTransport<UI_MESSAGE> {
+    constructor(options?: HttpChatTransportInitOptions<UI_MESSAGE>);
+    protected processResponseStream(stream: ReadableStream<Uint8Array<ArrayBufferLike>>): ReadableStream<UIMessageChunk>;
+}
+
+/**
+Check if the last message is an assistant message with completed tool call approvals.
+The last step of the message must have at least one tool approval response and
+all tool approvals must have a response.
+ */
+declare function lastAssistantMessageIsCompleteWithApprovalResponses({ messages, }: {
+    messages: UIMessage[];
+}): boolean;
+
+/**
+Check if the message is an assistant message with completed tool calls.
+The last step of the message must have at least one tool invocation and
+all tool invocations must have a result.
+ */
+declare function lastAssistantMessageIsCompleteWithToolCalls({ messages, }: {
+    messages: UIMessage[];
+}): boolean;
+
+declare class TextStreamChatTransport<UI_MESSAGE extends UIMessage> extends HttpChatTransport<UI_MESSAGE> {
+    constructor(options?: HttpChatTransportInitOptions<UI_MESSAGE>);
+    protected processResponseStream(stream: ReadableStream<Uint8Array<ArrayBufferLike>>): ReadableStream<UIMessageChunk>;
+}
+
+type CompletionRequestOptions = {
+    /**
+    An optional object of headers to be passed to the API endpoint.
+     */
+    headers?: Record<string, string> | Headers;
+    /**
+    An optional object to be passed to the API endpoint.
+       */
+    body?: object;
+};
+type UseCompletionOptions = {
+    /**
+     * The API endpoint that accepts a `{ prompt: string }` object and returns
+     * a stream of tokens of the AI completion response. Defaults to `/api/completion`.
+     */
+    api?: string;
+    /**
+     * An unique identifier for the chat. If not provided, a random one will be
+     * generated. When provided, the `useChat` hook with the same `id` will
+     * have shared states across components.
+     */
+    id?: string;

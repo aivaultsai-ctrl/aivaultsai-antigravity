@@ -39,3 +39,5 @@ build_verification*.txt
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+/generated/prisma

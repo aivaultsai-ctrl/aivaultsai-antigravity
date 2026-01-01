@@ -1,0 +1,15 @@
+src/app/(dashboard)/dashboard/operations/page.tsx(103,76): error TS2339: Property 'pricing' does not exist on type 'Agent'.
+src/app/api/agents/growth/analyze/route.ts(2,10): error TS2305: Module '"ai"' has no exported member 'generateObject'.
+src/app/api/agents/ops/automate-task/route.ts(2,10): error TS2305: Module '"ai"' has no exported member 'generateObject'.
+src/app/api/agents/support/handle-ticket/route.ts(2,10): error TS2305: Module '"ai"' has no exported member 'generateObject'.
+src/app/api/workers/content/route.ts(2,10): error TS2305: Module '"ai"' has no exported member 'generateText'.
+src/components/features/chat/ChatWindow.tsx(25,23): error TS2339: Property 'input' does not exist on type 'UseChatHelpers<UIMessage<unknown, UIDataTypes, UITools>>'.
+src/components/features/chat/ChatWindow.tsx(25,30): error TS2339: Property 'handleInputChange' does not exist on type 'UseChatHelpers<UIMessage<unknown, UIDataTypes, UITools>>'.
+src/components/features/chat/ChatWindow.tsx(25,49): error TS2339: Property 'handleSubmit' does not exist on type 'UseChatHelpers<UIMessage<unknown, UIDataTypes, UITools>>'.
+src/components/features/chat/ChatWindow.tsx(25,63): error TS2339: Property 'isLoading' does not exist on type 'UseChatHelpers<UIMessage<unknown, UIDataTypes, UITools>>'.
+src/components/features/chat/ChatWindow.tsx(25,87): error TS2339: Property 'reload' does not exist on type 'UseChatHelpers<UIMessage<unknown, UIDataTypes, UITools>>'.
+src/components/features/chat/ChatWindow.tsx(26,9): error TS2353: Object literal may only specify known properties, and 'api' does not exist in type 'UseChatOptions<UIMessage<unknown, UIDataTypes, UITools>>'.
+src/components/features/chat/ChatWindow.tsx(42,36): error TS7006: Parameter 'e' implicitly has an 'any' type.
+src/components/features/chat/ChatWindow.tsx(110,96): error TS2339: Property 'content' does not exist on type 'UIMessage<unknown, UIDataTypes, UITools>'.
+src/lib/ai/index.ts(3,10): error TS2724: '"ai"' has no exported member named 'CoreMessage'. Did you mean 'CreateMessage'?
+src/lib/ai/index.ts(3,23): error TS2305: Module '"ai"' has no exported member 'generateText'.

@@ -1,6 +1,11 @@
-﻿/** @type {import('next').NextConfig} */
+﻿import path from 'path';
+
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  // No output: 'export'
+  webpack: (config) => {
+    config.resolve.alias['@'] = path.resolve(process.cwd(), 'src');
+    return config;
+  },
 };
 
 export default nextConfig;

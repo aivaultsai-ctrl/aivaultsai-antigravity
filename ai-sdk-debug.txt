@@ -1,0 +1,100 @@
+﻿interface ChatInit<UI_MESSAGE extends UIMessage> {
+    /**
+     * A unique identifier for the chat. If not provided, a random one will be
+     * generated.
+     */
+    id?: string;
+    messageMetadataSchema?: FlexibleSchema<InferUIMessageMetadata<UI_MESSAGE>>;
+    dataPartSchemas?: UIDataTypesToSchemas<InferUIMessageData<UI_MESSAGE>>;
+    messages?: UI_MESSAGE[];
+    /**
+     * A way to provide a function that is going to be used for ids for messages and the chat.
+     * If not provided the default AI SDK `generateId` is used.
+     */
+    generateId?: IdGenerator;
+    transport?: ChatTransport<UI_MESSAGE>;
+    /**
+     * Callback function to be called when an error is encountered.
+     */
+    onError?: ChatOnErrorCallback;
+    /**
+    Optional callback function that is invoked when a tool call is received.
+    Intended for automatic client-side tool execution.
+  
+    You can optionally return a result for the tool call,
+    either synchronously or asynchronously.
+       */
+    onToolCall?: ChatOnToolCallCallback<UI_MESSAGE>;
+    /**
+     * Function that is called when the assistant response has finished streaming.
+     */
+    onFinish?: ChatOnFinishCallback<UI_MESSAGE>;
+    /**
+     * Optional callback function that is called when a data part is received.
+     *
+     * @param data The data part that was received.
+     */
+    onData?: ChatOnDataCallback<UI_MESSAGE>;
+    /**
+     * When provided, this function will be called when the stream is finished or a tool call is added
+     * to determine if the current messages should be resubmitted.
+     */
+    sendAutomaticallyWhen?: (options: {
+        messages: UI_MESSAGE[];
+    }) => boolean | PromiseLike<boolean>;
+}
+declare abstract class AbstractChat<UI_MESSAGE extends UIMessage> {
+    readonly id: string;
+    readonly generateId: IdGenerator;
+    protected state: ChatState<UI_MESSAGE>;
+    private messageMetadataSchema;
+    private dataPartSchemas;
+    private readonly transport;
+    private onError?;
+    private onToolCall?;
+    private onFinish?;
+    private onData?;
+    private sendAutomaticallyWhen?;
+    private activeResponse;
+    private jobExecutor;
+    constructor({ generateId, id, transport, messageMetadataSchema, dataPartSchemas, state, onError, onToolCall, onFinish, onData, sendAutomaticallyWhen, }: Omit<ChatInit<UI_MESSAGE>, 'messages'> & {
+        state: ChatState<UI_MESSAGE>;
+    });
+    /**
+     * Hook status:
+     *
+     * - `submitted`: The message has been sent to the API and we're awaiting the start of the response stream.
+     * - `streaming`: The response is actively streaming in from the API, receiving chunks of data.
+     * - `ready`: The full response has been received and processed; a new user message can be submitted.
+     * - `error`: An error occurred during the API request, preventing successful completion.
+     */
+    get status(): ChatStatus;
+    protected setStatus({ status, error, }: {
+        status: ChatStatus;
+        error?: Error;
+    }): void;
+    get error(): Error | undefined;
+    get messages(): UI_MESSAGE[];
+    get lastMessage(): UI_MESSAGE | undefined;
+    set messages(messages: UI_MESSAGE[]);
+    /**
+     * Appends or replaces a user message to the chat list. This triggers the API call to fetch
+     * the assistant's response.
+     *
+     * If a messageId is provided, the message will be replaced.
+     */
+    sendMessage: (message?: (CreateUIMessage<UI_MESSAGE> & {
+        text?: never;
+        files?: never;
+        messageId?: string;
+    }) | {
+        text: string;
+        files?: FileList | FileUIPart[];
+        metadata?: InferUIMessageMetadata<UI_MESSAGE>;
+        parts?: never;
+        messageId?: string;
+    } | {
+        files: FileList | FileUIPart[];
+        metadata?: InferUIMessageMetadata<UI_MESSAGE>;
+        parts?: never;
+        messageId?: string;

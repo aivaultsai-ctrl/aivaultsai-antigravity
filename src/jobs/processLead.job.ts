@@ -36,9 +36,9 @@ export async function processLeadJob(data: LeadJobData) {
         requiresReview = true;
     }
 
-    const lead = await prisma.lead.create({
+    const call = await prisma.call.create({
         data: {
-            tenantId: tenant.id,
+            organizationId: tenant.id, // Updated: was tenantId
             // Contact Info
             customerName: extracted?.customer_name ?? null,
             phoneNumber: extracted?.phone_number ?? null,
@@ -60,8 +60,8 @@ export async function processLeadJob(data: LeadJobData) {
     });
 
     // 🛡️ SHIELD MODE NOTIFICATION (Enhanced)
-    if (lead.mode === 'DEFENSIVE') {
-        logger.info({ leadId: lead.id, priority: lead.priority }, '🛡️ Shield Mode active for lead');
+    if (call.mode === 'DEFENSIVE') {
+        logger.info({ callId: call.id, priority: call.priority }, '🛡️ Shield Mode active for call');
 
         // Get tenant notification preferences
         const notificationPhone = (tenant as any).ownerPhone || (tenant as any).notificationPhone;
@@ -70,11 +70,11 @@ export async function processLeadJob(data: LeadJobData) {
             await sendShieldNotification({
                 to: notificationPhone,
                 tenantName: tenant.name,
-                invoiceNumber: lead.invoiceNumber || undefined,
-                companyName: lead.companyName || undefined,
-                priority: (lead.priority as 'HIGH' | 'CRITICAL') || 'HIGH',
-                summary: lead.summary || 'Financiële kwestie - zie dashboard voor details',
-                callTimestamp: lead.createdAt,
+                invoiceNumber: call.invoiceNumber || undefined,
+                companyName: call.companyName || undefined,
+                priority: (call.priority as 'HIGH' | 'CRITICAL') || 'HIGH',
+                summary: call.summary || 'Financiële kwestie - zie dashboard voor details',
+                callTimestamp: call.createdAt,
                 preferWhatsApp: (tenant as any).preferWhatsApp || false
             });
         } else {
@@ -82,5 +82,5 @@ export async function processLeadJob(data: LeadJobData) {
         }
     }
 
-    await notifyEntrepreneur(tenant, lead);
+    await notifyEntrepreneur(tenant, call);
 }

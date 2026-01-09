@@ -27,10 +27,12 @@ enum CallPriority {
 }
 
 model Tenant {
-  id        String     @id @default(cuid())
-  name      String
-  aiProfile AIProfile?
-  leads     Lead[]
+  id                String     @id @default(cuid())
+  name              String
+  notificationPhone String?
+  preferWhatsApp    Boolean    @default(false)
+  aiProfile         AIProfile?
+  leads             Lead[]
 }
 
 model AIProfile {
@@ -42,34 +44,35 @@ model AIProfile {
 }
 
 model Lead {
-  id               String       @id @default(uuid())
-  tenantId         String
+  id                  String       @id @default(uuid())
+  tenantId            String
 
   // Contact Info
-  customerName     String?
-  phoneNumber      String?
-  email            String?
+  customerName        String?
+  phoneNumber         String?
+  email               String?
 
   // AI Classification (Shield State)
-  intent           CallIntent   @default(LEAD)
-  mode             CallMode     @default(SALES)
-  priority         CallPriority @default(LOW)
+  intent              CallIntent   @default(LEAD)
+  mode                CallMode     @default(SALES)
+  priority            CallPriority @default(LOW)
 
   // Content & Protection
-  summary          String?      @db.Text
-  transcript       String?      @db.Text
-  invoiceNumber    String?      // Shield Mode: Factuurnummer
-  companyName      String?      // Shield Mode: Bedrijfsnaam (incasso, schuldeiser)
-  appointment      Boolean      @default(false)
+  summary             String?      @db.Text
+  transcript          String?      @db.Text
+  transcriptContent   String?      @db.Text // Full transcript for detailed analysis
+  invoiceNumber       String?      // Shield Mode: Factuurnummer
+  companyName         String?      // Shield Mode: Bedrijfsnaam (incasso, schuldeiser)
+  appointment         Boolean      @default(false)
 
   // Compliance & Quality Control
-  requiresReview   Boolean      @default(false)
+  requiresReview      Boolean      @default(false)
 
-  createdAt        DateTime     @default(now())
-  updatedAt        DateTime     @updatedAt
+  createdAt           DateTime     @default(now())
+  updatedAt           DateTime     @updatedAt
 
   // Relations
-  tenant           Tenant       @relation(fields: [tenantId], references: [id])
+  tenant              Tenant       @relation(fields: [tenantId], references: [id])
 
   @@index([tenantId, intent, mode])
   @@index([createdAt])

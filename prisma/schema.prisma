@@ -32,7 +32,7 @@ model Tenant {
   notificationPhone String?
   preferWhatsApp    Boolean    @default(false)
   aiProfile         AIProfile?
-  leads             Lead[]
+  calls             Call[]
 }
 
 model AIProfile {
@@ -43,39 +43,49 @@ model AIProfile {
   faqKnowledge Json?
 }
 
-model Lead {
-  id                  String       @id @default(uuid())
-  tenantId            String
+model Call {
+  id             String   @id @default(uuid())
+  organizationId String   // Multi-tenant isolatie (alias voor tenantId)
+
+  // Vapi Integration
+  vapiCallId     String?  @unique // Externe Vapi call ID
 
   // Contact Info
-  customerName        String?
-  phoneNumber         String?
-  email               String?
+  customerName   String?
+  phoneNumber    String?
+  email          String?
+
+  // Call Data
+  transcript     String?  @db.Text
+  duration       Int?     // Gespreksduur in seconden
+  summary        String?  @db.Text
+
+  // Vapi Metadata & Function Results
+  metadata       Json?    // Voor function call results, extractedData, etc.
 
   // AI Classification (Shield State)
-  intent              CallIntent   @default(LEAD)
-  mode                CallMode     @default(SALES)
-  priority            CallPriority @default(LOW)
+  intent         CallIntent?   @default(LEAD)
+  mode           CallMode?     @default(SALES)
+  priority       CallPriority? @default(LOW)
 
-  // Content & Protection
-  summary             String?      @db.Text
-  transcript          String?      @db.Text
-  transcriptContent   String?      @db.Text // Full transcript for detailed analysis
-  invoiceNumber       String?      // Shield Mode: Factuurnummer
-  companyName         String?      // Shield Mode: Bedrijfsnaam (incasso, schuldeiser)
-  appointment         Boolean      @default(false)
+  // Shield Mode Fields
+  invoiceNumber  String?  // Shield Mode: Factuurnummer
+  companyName    String?  // Shield Mode: Bedrijfsnaam (incasso, schuldeiser)
+  appointment    Boolean  @default(false)
 
   // Compliance & Quality Control
-  requiresReview      Boolean      @default(false)
+  requiresReview Boolean  @default(false)
 
-  createdAt           DateTime     @default(now())
-  updatedAt           DateTime     @updatedAt
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 
   // Relations
-  tenant              Tenant       @relation(fields: [tenantId], references: [id])
+  tenant         Tenant   @relation(fields: [organizationId], references: [id])
 
-  @@index([tenantId, intent, mode])
+  @@index([organizationId])
+  @@index([vapiCallId])
   @@index([createdAt])
+  @@index([organizationId, intent, mode])
 }
 
 model FAQEmbedding {

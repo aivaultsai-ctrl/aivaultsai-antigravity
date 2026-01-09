@@ -1,9 +1,8 @@
 import { PrismaClient } from '@prisma/client';
-import { PrismaPg } from '@prisma/adapter-pg';
-import pg from 'pg';
 
-const connectionString = process.env.DATABASE_URL;
-const pool = new pg.Pool({ connectionString });
-const adapter = new PrismaPg(pool);
+// Simple Prisma Client without adapter (compatible with Prisma 5.16.1)
+// The adapter is only needed for edge deployments and requires Prisma 7+ or driverAdapters preview feature
+export const prisma = new PrismaClient({
+  log: process.env.NODE_ENV === 'development' ? ['query', 'error', 'warn'] : ['error'],
+});
 
-export const prisma = new PrismaClient({ adapter });
